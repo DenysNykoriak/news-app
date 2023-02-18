@@ -1,6 +1,8 @@
+import { ThemeProvider } from "@mui/material";
 import React from "react";
 import { BrowserRouter, useRoutes } from "react-router-dom";
 import Layout from "./Layout";
+import { useInitAppTheme } from "./logic/theme";
 import HomePage from "./pages/HomePage";
 import NewsPage from "./pages/NewsPage";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -34,10 +36,14 @@ const AppRoutes = () => {
 };
 
 function App() {
+  const [theme] = useInitAppTheme();
+
   return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

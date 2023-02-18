@@ -1,5 +1,10 @@
+import { useState } from "react";
+
 export const useAuth = () => {
+  const [isAuthorized, setIsAuthorized] = useState(true);
+
   return {
-    isAuthorized: true,
+    isAuthorized,
+    toggleAuth: () => setIsAuthorized((prev) => !prev),
   };
 };
