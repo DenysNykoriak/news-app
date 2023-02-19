@@ -146,7 +146,25 @@ const HomePage = (props: Props) => {
               title: "Look in your past",
               date: "Feb 7, 2023",
               color: palette.brown[400],
-              avatars: <Avatars letters={["AN"]} />,
+              avatars: <Avatars letters={["AN", "BN"]} />,
+            },
+            {
+              title: "Future Medicine",
+              date: "Feb 4, 2023",
+              color: palette.orange[300],
+              avatars: <Avatars letters={["AV", "KL", "BA"]} max={2} />,
+            },
+            {
+              title: "Best facts about Ukraine",
+              date: "Jan 29, 2023",
+              color: palette.indigo[200],
+              avatars: <Avatars letters={["PY", "FB", "AA", "BG"]} />,
+            },
+            {
+              title: "Cumputer Devices",
+              date: "Jan 24, 2023",
+              color: palette.green[200],
+              avatars: <Avatars letters={["AY", "BB"]} />,
             },
           ]}
         />

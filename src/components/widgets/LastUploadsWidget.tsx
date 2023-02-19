@@ -33,7 +33,7 @@ const LastUploadsWidget = ({ title, data, sx, ...props }: Props) => {
         alignItems: "center",
         bgcolor: palette.white[100],
         borderRadius: "20px",
-        p: 3,
+        p: 2,
         ...sx,
       }}
       {...props}
@@ -43,7 +43,9 @@ const LastUploadsWidget = ({ title, data, sx, ...props }: Props) => {
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
-          mb: 4,
+          pl: 2,
+          mt: 1,
+          mb: 3,
         }}
       >
         <Typography
