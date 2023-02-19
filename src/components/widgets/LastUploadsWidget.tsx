@@ -45,108 +45,116 @@ const LastUploadsWidget = ({ title, data, sx, ...props }: Props) => {
     >
       <Stack
         sx={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          pl: 2,
-          mt: 1,
-          mb: 3,
+          height: "100%",
         }}
       >
-        <Typography
-          variant="h3"
+        <Stack
           sx={{
-            fontWeight: 600,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            pl: 2,
+            mt: 1,
+            mb: 3,
           }}
         >
-          {title}
-        </Typography>
-        <IconButton>
-          <MoreVertOutlinedIcon />
-        </IconButton>
-      </Stack>
-      <Divider variant="middle" flexItem />
-      <Stack
-        sx={{
-          p: 2,
-          gap: 2,
-        }}
-      >
-        {data.map((upload, index) => (
-          <Stack
-            key={upload.title + index}
+          <Typography
+            variant="h3"
             sx={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
+              fontWeight: 600,
             }}
           >
+            {title}
+          </Typography>
+          <IconButton>
+            <MoreVertOutlinedIcon />
+          </IconButton>
+        </Stack>
+        <Divider variant="middle" flexItem />
+        <Stack
+          sx={{
+            flexGrow: 1,
+            justifyContent: "center",
+            p: 2,
+            gap: 2,
+          }}
+        >
+          {data.map((upload, index) => (
             <Stack
+              key={upload.title + index}
               sx={{
                 flexDirection: "row",
+                justifyContent: "space-between",
                 alignItems: "center",
-                gap: 2,
               }}
             >
-              <Box
-                sx={(theme) => ({
-                  width: "50px",
-                  height: "50px",
-                  bgcolor: upload.color,
-                  borderRadius: "10px",
-                  display: "flex",
-                  justifyContent: "center",
+              <Stack
+                sx={{
+                  flexDirection: "row",
                   alignItems: "center",
+                  gap: 2,
+                }}
+              >
+                <Box
+                  sx={(theme) => ({
+                    width: "50px",
+                    height: "50px",
+                    bgcolor: upload.color,
+                    borderRadius: "10px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
 
-                  [theme.breakpoints.down("md")]: {
-                    width: "30px",
-                    height: "30px",
-                  },
-                })}
-              >
-                <DescriptionOutlinedIcon
-                  fontSize={isSmallDevice ? "small" : "medium"}
+                    [theme.breakpoints.down("md")]: {
+                      width: "30px",
+                      height: "30px",
+                    },
+                  })}
+                >
+                  <DescriptionOutlinedIcon
+                    fontSize={isSmallDevice ? "small" : "medium"}
+                    sx={{
+                      color: palette.white[100],
+                    }}
+                  />
+                </Box>
+                <Typography
+                  variant={isSmallDevice ? "h5" : "h4"}
                   sx={{
-                    color: palette.white[100],
+                    fontWeight: 600,
                   }}
-                />
-              </Box>
-              <Typography
-                variant={isSmallDevice ? "h5" : "h4"}
+                >
+                  {upload.title}
+                </Typography>
+              </Stack>
+              <Stack
                 sx={{
-                  fontWeight: 600,
+                  width: "50%",
+                  flexDirection: "row",
+                  justifyContent: { xs: "flex-end", sm: "space-between" },
+                  alignItems: "center",
+                  gap: 2,
                 }}
               >
-                {upload.title}
-              </Typography>
+                <Box
+                  sx={{
+                    display: { xs: "none", sm: "block" },
+                  }}
+                >
+                  {upload.avatars}
+                </Box>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    ml: "1%",
+                  }}
+                >
+                  {upload.date}
+                </Typography>
+              </Stack>
             </Stack>
-            <Stack
-              sx={{
-                width: "50%",
-                flexDirection: "row",
-                justifyContent: { xs: "flex-end", sm: "space-between" },
-                alignItems: "center",
-                gap: 2,
-              }}
-            >
-              <Box
-                sx={{
-                  display: { xs: "none", sm: "block" },
-                }}
-              >
-                {upload.avatars}
-              </Box>
-              <Typography
-                variant="h5"
-                sx={{
-                  ml: "1%",
-                }}
-              >
-                {upload.date}
-              </Typography>
-            </Stack>
-          </Stack>
-        ))}
+          ))}
+        </Stack>
       </Stack>
     </Paper>
   );

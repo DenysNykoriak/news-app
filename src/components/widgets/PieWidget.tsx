@@ -32,7 +32,6 @@ const PieWidget = ({ title, data, percentage, sx, ...props }: Props) => {
   return (
     <Paper
       sx={{
-        alignItems: "center",
         bgcolor: palette.white[100],
         borderRadius: "20px",
         p: 3,
@@ -42,58 +41,66 @@ const PieWidget = ({ title, data, percentage, sx, ...props }: Props) => {
     >
       <Stack
         sx={{
-          flexDirection: "row",
+          flexDirection: "column",
           justifyContent: "space-between",
-          alignItems: "center",
+          height: "100%",
         }}
       >
-        <Typography
-          variant="h3"
+        <Stack
           sx={{
-            fontWeight: 600,
-          }}
-        >
-          {title}
-        </Typography>
-        <IconButton>
-          <MoreVertOutlinedIcon />
-        </IconButton>
-      </Stack>
-      <Stack
-        sx={{
-          position: "relative",
-          py: 2,
-          px: 5,
-          mb: 2,
-        }}
-      >
-        <PieChart animate={true} animationDuration={1000} data={data} />
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            bottom: 0,
-            left: muiTheme.spacing(3),
-            right: muiTheme.spacing(3),
-            bgcolor: palette.white[100],
-            borderRadius: "50%",
-            m: "20%",
-            display: "flex",
-            justifyContent: "center",
+            flexDirection: "row",
+            justifyContent: "space-between",
             alignItems: "center",
           }}
         >
           <Typography
-            variant="h1"
+            variant="h3"
             sx={{
               fontWeight: 600,
             }}
           >
-            {percentage}%
+            {title}
           </Typography>
-        </Box>
+          <IconButton>
+            <MoreVertOutlinedIcon />
+          </IconButton>
+        </Stack>
+        <Stack
+          sx={{
+            position: "relative",
+            py: 2,
+            px: 5,
+            mb: 2,
+          }}
+        >
+          <PieChart animate={true} animationDuration={1000} data={data} />
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              bottom: 0,
+              left: muiTheme.spacing(3),
+              right: muiTheme.spacing(3),
+              bgcolor: palette.white[100],
+              borderRadius: "50%",
+              m: "20%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              variant="h1"
+              sx={{
+                fontWeight: 600,
+              }}
+            >
+              {percentage}%
+            </Typography>
+          </Box>
+        </Stack>
+        <WidgetDataSection data={data} />
       </Stack>
-      <WidgetDataSection data={data} />
     </Paper>
   );
 };

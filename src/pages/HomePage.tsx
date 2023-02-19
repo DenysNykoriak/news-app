@@ -110,74 +110,90 @@ const HomePage = (props: Props) => {
           />
         </Stack>
       </Grid>
-      <Grid item xs={12} md={4}>
-        <PieWidget
-          title="News Statistics"
-          percentage={45}
-          data={[
-            { title: "Finances", value: 342, color: palette.indigo[500] },
-            { title: "Politics", value: 242, color: palette.green[500] },
-            { title: "IT", value: 302, color: palette.orange[400] },
-            { title: "Other", value: 502, color: palette.grey[200] },
-          ]}
-          sx={{
-            width: "100%",
-          }}
-        />
-      </Grid>
-      <Grid item xs={12} md={8}>
-        <LastUploadsWidget
-          title="Last News"
-          data={[
-            {
-              title: "News in IT",
-              date: "Feb 19, 2023",
-              color: palette.indigo[500],
-              avatars: <Avatars letters={["AN", "LG", "FB"]} />,
+      <Grid item xs={12}>
+        <Stack
+          sx={(theme) => ({
+            flexDirection: "row",
+            gap: 4,
+            [theme.breakpoints.down(theme.breakpoints.values.md + 100)]: {
+              flexDirection: "column",
+              width: "80%",
+              mx: "auto",
             },
-            {
-              title: "Some News",
-              date: "Feb 14, 2023",
-              color: palette.green[500],
-              avatars: (
-                <Avatars
-                  letters={["DB", "AD", "FB", "NH", "CD", "WT"]}
-                  max={3}
-                />
-              ),
+            [theme.breakpoints.down("sm")]: {
+              width: "95%",
             },
-            {
-              title: "More About Banks",
-              date: "Feb 12, 2023",
-              color: palette.orange[400],
-              avatars: <Avatars letters={["ED", "MD", "AR", "TR"]} />,
-            },
-            {
-              title: "Look in your past",
-              date: "Feb 7, 2023",
-              color: palette.brown[400],
-              avatars: <Avatars letters={["AN", "BN"]} />,
-            },
-            {
-              title: "Future Medicine",
-              date: "Feb 4, 2023",
-              color: palette.orange[300],
-              avatars: <Avatars letters={["AV", "KL", "BA"]} max={2} />,
-            },
-            {
-              title: "Best facts about Ukraine",
-              date: "Jan 29, 2023",
-              color: palette.indigo[200],
-              avatars: <Avatars letters={["PY", "FB", "AA", "BG"]} />,
-            },
-            {
-              title: "Computer Devices",
-              date: "Jan 24, 2023",
-              color: palette.green[200],
-              avatars: <Avatars letters={["AY", "BB"]} />,
-            },
-          ]}
-        />
+          })}
+        >
+          <PieWidget
+            title="News Statistics"
+            percentage={45}
+            data={[
+              { title: "Finances", value: 342, color: palette.indigo[500] },
+              { title: "Politics", value: 242, color: palette.green[500] },
+              { title: "IT", value: 302, color: palette.orange[400] },
+              { title: "Other", value: 502, color: palette.grey[200] },
+            ]}
+            sx={{
+              flexGrow: 2,
+            }}
+          />
+          <LastUploadsWidget
+            title="Last News"
+            data={[
+              {
+                title: "News in IT",
+                date: "Feb 19, 2023",
+                color: palette.indigo[500],
+                avatars: <Avatars letters={["AN", "LG", "FB"]} />,
+              },
+              {
+                title: "Some News",
+                date: "Feb 14, 2023",
+                color: palette.green[500],
+                avatars: (
+                  <Avatars
+                    letters={["DB", "AD", "FB", "NH", "CD", "WT"]}
+                    max={3}
+                  />
+                ),
+              },
+              {
+                title: "More About Banks",
+                date: "Feb 12, 2023",
+                color: palette.orange[400],
+                avatars: <Avatars letters={["ED", "MD", "AR", "TR"]} />,
+              },
+              {
+                title: "Look in your past",
+                date: "Feb 7, 2023",
+                color: palette.brown[400],
+                avatars: <Avatars letters={["AN", "BN"]} />,
+              },
+              {
+                title: "Future Medicine",
+                date: "Feb 4, 2023",
+                color: palette.orange[300],
+                avatars: <Avatars letters={["AV", "KL", "BA"]} max={2} />,
+              },
+              {
+                title: "Best facts about Ukraine",
+                date: "Jan 29, 2023",
+                color: palette.indigo[200],
+                avatars: <Avatars letters={["PY", "FB", "AA", "BG"]} />,
+              },
+              {
+                title: "Computer Devices",
+                date: "Jan 24, 2023",
+                color: palette.green[200],
+                avatars: <Avatars letters={["AY", "BB"]} />,
+              },
+            ]}
+            sx={{
+              flexGrow: 8,
+            }}
+          />
+        </Stack>
       </Grid>
     </Grid>
   );
