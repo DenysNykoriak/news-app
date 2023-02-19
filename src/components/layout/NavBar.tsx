@@ -15,7 +15,7 @@ export type NavBarProps = {
     title: string;
     to: string;
   }[];
-} & StackProps;
+} & StackProps<"nav">;
 
 const NavBar = ({ links, ...props }: NavBarProps) => {
   const [{ palette }] = useAppColors();
@@ -25,6 +25,7 @@ const NavBar = ({ links, ...props }: NavBarProps) => {
 
   return (
     <Stack
+      component="nav"
       direction="row"
       justifyContent="space-between"
       alignItems="center"
@@ -34,6 +35,7 @@ const NavBar = ({ links, ...props }: NavBarProps) => {
         p: 3,
         pb: 7,
         mb: -4,
+        zIndex: 0,
       }}
       {...props}
     >
