@@ -1,14 +1,14 @@
 import React from "react";
 import { CssBaseline, Stack } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import NavBar from "./components/NavBar";
-import ContentContainer from "./components/ContentContainer";
+import NavBar from "./components/layout/NavBar";
+import ContentContainer from "./components/layout/ContentContainer";
 
 const Layout = () => {
   return (
     <Stack
       sx={{
-        width: "100vw",
+        width: "100%",
         minHeight: "100vh",
         justifyContent: "space-between",
         alignItems: "center",

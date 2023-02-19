@@ -1,6 +1,6 @@
 import { Paper, PaperProps } from "@mui/material";
 import React from "react";
-import { useAppColors } from "../logic/theme";
+import { useAppColors } from "../../logic/theme";
 
 type Props = {
   children?: React.ReactNode;
@@ -16,7 +16,7 @@ const ContentContainer = ({ children, ...props }: Props) => {
         flexGrow: 1,
         bgcolor: palette.white[500],
         borderRadius: "30px",
-        p: 3,
+        p: 4,
       }}
       {...props}
     >
