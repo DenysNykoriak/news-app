@@ -1,7 +1,7 @@
 import React from "react";
 import { CssBaseline, Stack } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import NavBar from "./components/layout/NavBar";
+import NavBar from "./components/layout/Navbar";
 import ContentContainer from "./components/layout/ContentContainer";
 import Footer from "./components/layout/Footer";
 

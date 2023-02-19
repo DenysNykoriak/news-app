@@ -13,6 +13,7 @@ const ContentContainer = ({ children, ...props }: Props) => {
     <Paper
       sx={{
         width: "100%",
+        minHeight: "90vh",
         flexGrow: 1,
         bgcolor: palette.white[500],
         borderRadius: "30px",
