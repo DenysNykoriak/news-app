@@ -25,7 +25,7 @@ export type NavbarProps = {
   }[];
 } & StackProps<"nav">;
 
-const NavBar = ({ links, ...props }: NavbarProps) => {
+const Navbar = ({ links, ...props }: NavbarProps) => {
   const [{ palette }] = useAppColors();
   const { isAuthorized, toggleAuth } = useAuth();
 
@@ -144,4 +144,4 @@ const NavBar = ({ links, ...props }: NavbarProps) => {
   );
 };
 
-export default NavBar;
+export default Navbar;

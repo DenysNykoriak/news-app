@@ -9,7 +9,7 @@ import {
   Link as MuiLink,
 } from "@mui/material";
 import { useAppColors } from "../../../logic/theme";
-import { NavbarProps } from "../Navbar";
+import { NavbarProps } from "../NavBar";
 import { Link, useLocation } from "react-router-dom";
 
 type Props = {

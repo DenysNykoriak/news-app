@@ -1,7 +1,7 @@
 import React from "react";
 import { CssBaseline, Stack } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import NavBar from "./components/layout/Navbar";
+import Navbar from "./components/layout/NavBar";
 import ContentContainer from "./components/layout/ContentContainer";
 import Footer from "./components/layout/Footer";
 
@@ -16,7 +16,7 @@ const Layout = () => {
         overflow: "hidden",
       }}
     >
-      <NavBar
+      <Navbar
         links={[
           { reactKey: "home", title: "Home", to: "/" },
           { reactKey: "news", title: "News", to: "/news" },
