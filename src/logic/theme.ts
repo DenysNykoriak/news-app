@@ -22,6 +22,9 @@ type ColorTokensType = {
     white: ColorPaletteType;
     brown: ColorPaletteType;
   };
+  common: {
+    black: string;
+  };
 };
 
 const colorTokens = (): ColorTokensType => ({
@@ -92,6 +95,9 @@ const colorTokens = (): ColorTokensType => ({
       800: "#1b1312",
       900: "#0d0909",
     },
+  },
+  common: {
+    black: "#000000",
   },
 });
 
