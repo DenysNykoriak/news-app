@@ -1,18 +1,13 @@
 import React from "react";
-import {
-  Stack,
-  StackProps,
-  Box,
-  Typography,
-  Link as MuiLink,
-  IconButton,
-  Tooltip,
-} from "@mui/material";
+import { Stack, StackProps, Link as MuiLink } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
-import { useAppColors } from "../logic/theme";
+import { useAppColors } from "../../logic/theme";
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-import { useAuth } from "../hooks/useAuth";
+import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
+import { useAuth } from "../../hooks/useAuth";
+import NavbarIconButton from "./navbar/NavbarIconButton";
+import Logo from "./navbar/Logo";
 
 export type NavBarProps = {
   links: {
@@ -42,27 +37,29 @@ const NavBar = ({ links, ...props }: NavBarProps) => {
       }}
       {...props}
     >
-      <Box>
-        <Typography
-          variant="h3"
-          component="h1"
+      {/* Left Side */}
+      <Logo />
+
+      {/* Right Side */}
+      <Stack direction={"row"} gap={2}>
+        {/* Icon Buttons */}
+        <Stack
+          direction={"row"}
           sx={{
-            color: palette.white[200],
-            fontFamily: "Fira Sans, sans-serif",
-            fontWeight: 500,
+            gap: 2,
+            mr: 1,
           }}
         >
-          News App
-        </Typography>
-      </Box>
-      <Stack direction={"row"} gap={2}>
-        <Tooltip title={isAuthorized ? "Log out" : "Log in"}>
-          <IconButton
+          <NavbarIconButton title="Notification">
+            <NotificationsOutlinedIcon
+              sx={{
+                color: palette.white[200],
+              }}
+            />
+          </NavbarIconButton>
+          <NavbarIconButton
+            title={isAuthorized ? "Log out" : "Log in"}
             onClick={toggleAuth}
-            sx={{
-              border: `2px solid ${palette.grey[300]}`,
-              borderRadius: "10px",
-            }}
           >
             {isAuthorized ? (
               <LogoutOutlinedIcon
@@ -77,9 +74,10 @@ const NavBar = ({ links, ...props }: NavBarProps) => {
                 }}
               />
             )}
-          </IconButton>
-        </Tooltip>
+          </NavbarIconButton>
+        </Stack>
 
+        {/* Links */}
         {links.map((link) => (
           <MuiLink
             key={link.reactKey}
@@ -90,7 +88,6 @@ const NavBar = ({ links, ...props }: NavBarProps) => {
               color: palette.white[200],
               py: 1,
               px: 2,
-              border: `2px solid ${palette.green[500]}`,
               borderRadius: "10px",
               backgroundColor:
                 location.pathname === link.to ? palette.green[500] : undefined,
