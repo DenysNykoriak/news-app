@@ -106,6 +106,8 @@ const fontFamily = "Source Sans Pro, sans-serif";
 const themeSettings = (): ThemeOptions => {
   const colors = colorTokens();
 
+  const breakpoints = createTheme({}).breakpoints;
+
   return {
     palette: {
       primary: { main: colors.palette.green[500] },
@@ -118,29 +120,50 @@ const themeSettings = (): ThemeOptions => {
     typography: {
       fontFamily,
       fontSize: 14,
+      [breakpoints.down("md")]: {
+        fontSize: 12,
+      },
       h1: {
         fontFamily,
         fontSize: 40,
+        [breakpoints.down("md")]: {
+          fontSize: 38,
+        },
       },
       h2: {
         fontFamily,
         fontSize: 32,
+        [breakpoints.down("md")]: {
+          fontSize: 30,
+        },
       },
       h3: {
         fontFamily,
         fontSize: 24,
+        [breakpoints.down("md")]: {
+          fontSize: 22,
+        },
       },
       h4: {
         fontFamily,
         fontSize: 20,
+        [breakpoints.down("md")]: {
+          fontSize: 18,
+        },
       },
       h5: {
         fontFamily,
         fontSize: 16,
+        [breakpoints.down("md")]: {
+          fontSize: 14,
+        },
       },
       h6: {
         fontFamily,
         fontSize: 14,
+        [breakpoints.down("md")]: {
+          fontSize: 12,
+        },
       },
     },
   };

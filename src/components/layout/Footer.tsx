@@ -24,6 +24,7 @@ const Footer = (props: Props) => {
     >
       <Typography
         variant="body1"
+        align="center"
         sx={{
           color: palette.white[100],
         }}
@@ -59,7 +60,7 @@ const Footer = (props: Props) => {
             target="_blank"
           >
             Dribbble
-          </Link>{" "}
+          </Link>
         </Typography>
       </Stack>
     </Stack>

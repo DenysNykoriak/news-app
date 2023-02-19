@@ -8,12 +8,11 @@ type Props = {
   segment: Required<PieWidgetData>;
 } & StackProps;
 
-const WidgetSegmentInfo = ({ segment, key, ...props }: Props) => {
+const WidgetSegmentInfo = ({ segment, ...props }: Props) => {
   const [{ palette }] = useAppColors();
 
   return (
     <Stack
-      key={key}
       sx={{
         flexDirection: "column",
         alignItems: "center",

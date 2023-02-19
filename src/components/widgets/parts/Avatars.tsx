@@ -1,7 +1,7 @@
 import { Avatar, AvatarGroup, AvatarGroupProps } from "@mui/material";
 import random from "random";
 import React from "react";
-import { useAppColors } from "../../logic/theme";
+import { useAppColors } from "../../../logic/theme";
 
 type Props = {
   letters: string[];
@@ -28,9 +28,25 @@ const Avatars = ({ letters, ...props }: Props) => {
   };
 
   return (
-    <AvatarGroup {...props}>
+    <AvatarGroup
+      sx={(theme) => ({
+        "& .MuiAvatar-root": {
+          [theme.breakpoints.down("md")]: {
+            width: 24,
+            height: 24,
+            fontSize: 14,
+          },
+        },
+      })}
+      {...props}
+    >
       {letters.map((letter, index) => (
-        <Avatar key={letter + index} sx={{ bgcolor: getRandomColor() }}>
+        <Avatar
+          key={letter + index}
+          sx={{
+            bgcolor: getRandomColor(),
+          }}
+        >
           {letter}
         </Avatar>
       ))}

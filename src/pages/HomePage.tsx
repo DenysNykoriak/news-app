@@ -7,7 +7,7 @@ import AddBox from "../components/AddBox";
 import HomeCard from "../components/home/HomeCard";
 import PieWidget from "../components/widgets/PieWidget";
 import LastUploadsWidget from "../components/widgets/LastUploadsWidget";
-import Avatars from "../components/widgets/Avatars";
+import Avatars from "../components/widgets/parts/Avatars";
 
 type Props = GridProps;
 
@@ -35,7 +35,7 @@ const HomePage = (props: Props) => {
           />
         </Stack>
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} md={4}>
         <Stack
           sx={{
             justifyContent: "center",
@@ -56,19 +56,29 @@ const HomePage = (props: Props) => {
           </Typography>
         </Stack>
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={12} md={8}>
         <Stack
-          sx={{
-            height: "100%",
-            flexDirection: "row",
-            justifyContent: "center",
-            gap: 5,
-          }}
+          sx={(theme) => ({
+            [theme.breakpoints.up(0)]: {
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "flex-start",
+              gap: 3,
+            },
+            [theme.breakpoints.up("sm")]: {
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "stretch",
+              gap: 2,
+            },
+            [theme.breakpoints.up("md")]: {
+              gap: 5,
+            },
+          })}
         >
           <AddBox
             sx={{
-              width: "10%",
-              height: "100%",
+              width: { xs: "80%", sm: "10%" },
             }}
           />
           <HomeCard
@@ -77,7 +87,7 @@ const HomePage = (props: Props) => {
             subtitle="+134 news"
             color={palette.green[500]}
             sx={{
-              width: "25%",
+              width: { xs: "80%", sm: "25%" },
             }}
           />
           <HomeCard
@@ -86,7 +96,7 @@ const HomePage = (props: Props) => {
             subtitle="+234 news"
             color={palette.indigo[500]}
             sx={{
-              width: "25%",
+              width: { xs: "80%", sm: "25%" },
             }}
           />
           <HomeCard
@@ -95,12 +105,12 @@ const HomePage = (props: Props) => {
             subtitle="+34 news"
             color={palette.brown[400]}
             sx={{
-              width: "25%",
+              width: { xs: "80%", sm: "25%" },
             }}
           />
         </Stack>
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} md={4}>
         <PieWidget
           title="News Statistics"
           percentage={45}
@@ -115,7 +125,7 @@ const HomePage = (props: Props) => {
           }}
         />
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={12} md={8}>
         <LastUploadsWidget
           title="Last News"
           data={[
@@ -161,7 +171,7 @@ const HomePage = (props: Props) => {
               avatars: <Avatars letters={["PY", "FB", "AA", "BG"]} />,
             },
             {
-              title: "Cumputer Devices",
+              title: "Computer Devices",
               date: "Jan 24, 2023",
               color: palette.green[200],
               avatars: <Avatars letters={["AY", "BB"]} />,

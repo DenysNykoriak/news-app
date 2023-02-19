@@ -16,7 +16,7 @@ const ContentContainer = ({ children, ...props }: Props) => {
         flexGrow: 1,
         bgcolor: palette.white[500],
         borderRadius: "30px",
-        p: 4,
+        p: { xs: 2, md: 4 },
         zIndex: 1,
       }}
       {...props}
