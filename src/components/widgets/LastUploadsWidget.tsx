@@ -86,13 +86,17 @@ const LastUploadsWidget = ({ title, data, sx, ...props }: Props) => {
                   width: "50px",
                   height: "50px",
                   bgcolor: upload.color,
-                  borderRadius: "50%",
+                  borderRadius: "10px",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <DescriptionOutlinedIcon />
+                <DescriptionOutlinedIcon
+                  sx={{
+                    color: palette.white[100],
+                  }}
+                />
               </Box>
               <Typography
                 variant="h4"
