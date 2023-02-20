@@ -35,7 +35,7 @@ const HomePage = (props: Props) => {
           />
         </Stack>
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid item xs={4}>
         <Stack
           sx={{
             justifyContent: "center",
@@ -56,29 +56,18 @@ const HomePage = (props: Props) => {
           </Typography>
         </Stack>
       </Grid>
-      <Grid item xs={12} md={8}>
+      <Grid item xs={8}>
         <Stack
-          sx={(theme) => ({
-            [theme.breakpoints.up(0)]: {
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "flex-start",
-              gap: 3,
-            },
-            [theme.breakpoints.up("sm")]: {
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "stretch",
-              gap: 2,
-            },
-            [theme.breakpoints.up("md")]: {
-              gap: 5,
-            },
-          })}
+          sx={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "stretch",
+            gap: 5,
+          }}
         >
           <AddBox
             sx={{
-              width: { xs: "80%", sm: "10%" },
+              width: "10%",
             }}
           />
           <HomeCard
@@ -87,7 +76,7 @@ const HomePage = (props: Props) => {
             subtitle="+134 news"
             color={palette.green[500]}
             sx={{
-              width: { xs: "80%", sm: "25%" },
+              width: "25%",
             }}
           />
           <HomeCard
@@ -96,7 +85,7 @@ const HomePage = (props: Props) => {
             subtitle="+234 news"
             color={palette.indigo[500]}
             sx={{
-              width: { xs: "80%", sm: "25%" },
+              width: "25%",
             }}
           />
           <HomeCard
@@ -105,25 +94,17 @@ const HomePage = (props: Props) => {
             subtitle="+34 news"
             color={palette.brown[400]}
             sx={{
-              width: { xs: "80%", sm: "25%" },
+              width: "25%",
             }}
           />
         </Stack>
       </Grid>
       <Grid item xs={12}>
         <Stack
-          sx={(theme) => ({
+          sx={{
             flexDirection: "row",
             gap: 4,
-            [theme.breakpoints.down(theme.breakpoints.values.md + 100)]: {
-              flexDirection: "column",
-              width: "80%",
-              mx: "auto",
-            },
-            [theme.breakpoints.down("sm")]: {
-              width: "95%",
-            },
-          })}
+          }}
         >
           <PieWidget
             title="News Statistics"

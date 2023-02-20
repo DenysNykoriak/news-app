@@ -28,18 +28,7 @@ const Avatars = ({ letters, ...props }: Props) => {
   };
 
   return (
-    <AvatarGroup
-      sx={(theme) => ({
-        "& .MuiAvatar-root": {
-          [theme.breakpoints.down("md")]: {
-            width: 24,
-            height: 24,
-            fontSize: 14,
-          },
-        },
-      })}
-      {...props}
-    >
+    <AvatarGroup {...props}>
       {letters.map((letter, index) => (
         <Avatar
           key={letter + index}

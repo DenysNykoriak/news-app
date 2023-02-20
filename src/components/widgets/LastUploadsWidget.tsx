@@ -6,8 +6,6 @@ import {
   PaperProps,
   Stack,
   Box,
-  useTheme,
-  useMediaQuery,
 } from "@mui/material";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
@@ -28,9 +26,6 @@ type Props = {
 
 const LastUploadsWidget = ({ title, data, sx, ...props }: Props) => {
   const [{ palette }] = useAppColors();
-
-  const muiTheme = useTheme();
-  const isSmallDevice = useMediaQuery(muiTheme.breakpoints.down("md"));
 
   return (
     <Paper
@@ -96,7 +91,7 @@ const LastUploadsWidget = ({ title, data, sx, ...props }: Props) => {
                 }}
               >
                 <Box
-                  sx={(theme) => ({
+                  sx={{
                     width: "50px",
                     height: "50px",
                     bgcolor: upload.color,
@@ -104,22 +99,16 @@ const LastUploadsWidget = ({ title, data, sx, ...props }: Props) => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-
-                    [theme.breakpoints.down("md")]: {
-                      width: "30px",
-                      height: "30px",
-                    },
-                  })}
+                  }}
                 >
                   <DescriptionOutlinedIcon
-                    fontSize={isSmallDevice ? "small" : "medium"}
                     sx={{
                       color: palette.white[100],
                     }}
                   />
                 </Box>
                 <Typography
-                  variant={isSmallDevice ? "h5" : "h4"}
+                  variant="h4"
                   sx={{
                     fontWeight: 600,
                   }}
@@ -131,18 +120,12 @@ const LastUploadsWidget = ({ title, data, sx, ...props }: Props) => {
                 sx={{
                   width: "50%",
                   flexDirection: "row",
-                  justifyContent: { xs: "flex-end", sm: "space-between" },
+                  justifyContent: "space-between",
                   alignItems: "center",
                   gap: 2,
                 }}
               >
-                <Box
-                  sx={{
-                    display: { xs: "none", sm: "block" },
-                  }}
-                >
-                  {upload.avatars}
-                </Box>
+                {upload.avatars}
                 <Typography
                   variant="h5"
                   sx={{

@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Stack,
-  StackProps,
-  Link as MuiLink,
-  Box,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material";
+import { Stack, StackProps, Link as MuiLink } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import { useAppColors } from "../../logic/theme";
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
@@ -15,7 +8,6 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import { useAuth } from "../../hooks/useAuth";
 import NavbarIconButton from "./navbar/NavbarIconButton";
 import Logo from "./navbar/Logo";
-import NavbarBurger from "./navbar/NavbarBurger";
 
 export type NavbarProps = {
   links: {
@@ -30,9 +22,6 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
   const { isAuthorized, toggleAuth } = useAuth();
 
   const location = useLocation();
-
-  const muiTheme = useTheme();
-  const isSmallDevice = useMediaQuery(muiTheme.breakpoints.down("md"));
 
   return (
     <Stack
@@ -55,39 +44,29 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
         {/* Icon Buttons */}
         <Stack
           direction={"row"}
-          sx={(theme) => ({
+          sx={{
             gap: 2,
-            [theme.breakpoints.down("sm")]: {
-              mr: 2,
-            },
-          })}
+          }}
         >
-          <NavbarIconButton
-            title="Notification"
-            size={isSmallDevice ? "small" : "medium"}
-          >
+          <NavbarIconButton title="Notification">
             <NotificationsOutlinedIcon
-              fontSize={isSmallDevice ? "small" : "medium"}
               sx={{
                 color: palette.white[200],
               }}
             />
           </NavbarIconButton>
           <NavbarIconButton
-            size={isSmallDevice ? "small" : "medium"}
             title={isAuthorized ? "Log out" : "Log in"}
             onClick={toggleAuth}
           >
             {isAuthorized ? (
               <LogoutOutlinedIcon
-                fontSize={isSmallDevice ? "small" : "medium"}
                 sx={{
                   color: palette.white[200],
                 }}
               />
             ) : (
               <LoginOutlinedIcon
-                fontSize={isSmallDevice ? "small" : "medium"}
                 sx={{
                   color: palette.white[200],
                 }}
@@ -97,15 +76,7 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
         </Stack>
 
         {/* Links */}
-        <Stack
-          direction={"row"}
-          gap={1}
-          sx={(theme) => ({
-            [theme.breakpoints.down("sm")]: {
-              display: "none",
-            },
-          })}
-        >
+        <Stack direction={"row"} gap={1}>
           {links.map((link) => (
             <MuiLink
               key={link.reactKey}
@@ -127,18 +98,6 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
             </MuiLink>
           ))}
         </Stack>
-
-        {/* Burger */}
-        <Box
-          sx={(theme) => ({
-            display: "none",
-            [theme.breakpoints.down("sm")]: {
-              display: "block",
-            },
-          })}
-        >
-          <NavbarBurger links={links} />
-        </Box>
       </Stack>
     </Stack>
   );
