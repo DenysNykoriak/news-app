@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider as ReduxProvider } from "react-redux";
 import App from "./App";
+import { store } from "./logic/store/store";
 import "./styles/index.css";
 
 const root = ReactDOM.createRoot(
@@ -8,6 +10,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ReduxProvider store={store}>
+      <App />
+    </ReduxProvider>
   </React.StrictMode>
 );
