@@ -14,6 +14,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState, ChangeEvent } from "react";
 import { useAppColors } from "../../logic/theme";
 import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   open: boolean;
@@ -37,6 +38,7 @@ const LoginInput = styled(InputBase)(({ theme }) => ({
 const LoginDialog = ({ open, handleClose }: Props) => {
   const [{ palette, common: commonColors }] = useAppColors();
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const [form, setForm] = useState({
     username: "",
@@ -71,6 +73,7 @@ const LoginDialog = ({ open, handleClose }: Props) => {
         password: "",
       });
       setErrorMessage("");
+      navigate("/profile");
       return;
     }
 

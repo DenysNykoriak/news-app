@@ -1,6 +1,6 @@
 import React from "react";
 import { Stack, StackProps, Link as MuiLink } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAppColors } from "../../logic/theme";
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
@@ -24,6 +24,7 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
   const [{ palette }] = useAppColors();
   const { isAuthorized, logout } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
 
   //* Confirm Logout
   const {
@@ -33,6 +34,7 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
     handleDialogConsent: handleLogoutDialogConsent,
   } = useConfirmationDialog({
     handleConsent: () => {
+      navigate("/");
       logout();
     },
   });
