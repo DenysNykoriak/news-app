@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Stack, StackProps, Link as MuiLink } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import { useAppColors } from "../../logic/theme";
@@ -9,6 +9,7 @@ import { useAuth } from "../../hooks/useAuth";
 import NavbarIconButton from "./navbar/NavbarIconButton";
 import Logo from "./navbar/Logo";
 import ConfirmationDialog from "../dialogs/ConfirmationDialog";
+import { useConfirmationDialog } from "../../hooks/useConfirmationDialog";
 
 export type NavbarProps = {
   links: {
@@ -24,13 +25,16 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
   const location = useLocation();
 
   //* Confirm Logout
-  const [confirmLogoutOpenState, setConfirmLogoutOpenState] = useState(false);
-  const handleLogoutDialogOpen = () => setConfirmLogoutOpenState(true);
-  const handleLogoutDialogClose = () => setConfirmLogoutOpenState(false);
-  const handleLogoutDialogConsent = () => {
-    setConfirmLogoutOpenState(false);
-    logout();
-  };
+  const {
+    dialogOpen: confirmLogoutOpenState,
+    handleDialogOpen: handleLogoutDialogOpen,
+    handleDialogClose: handleLogoutDialogClose,
+    handleDialogConsent: handleLogoutDialogConsent,
+  } = useConfirmationDialog({
+    handleConsent: () => {
+      logout();
+    },
+  });
 
   return (
     <>
