@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@mui/material";
 import React from "react";
-import { BrowserRouter, useRoutes } from "react-router-dom";
-import { useInitAuth } from "./hooks/useAuth";
+import { BrowserRouter, useRoutes, Navigate } from "react-router-dom";
+import { useAuth, useInitAuth } from "./hooks/useAuth";
 import Layout from "./Layout";
 import { useInitAppTheme } from "./logic/theme";
 import HomePage from "./pages/HomePage";
@@ -10,6 +10,8 @@ import NotFoundPage from "./pages/NotFoundPage";
 import ProfilePage from "./pages/ProfilePage";
 
 const AppRoutes = () => {
+  const { isAuthorized } = useAuth();
+
   return useRoutes([
     {
       path: "/",
@@ -25,7 +27,7 @@ const AppRoutes = () => {
         },
         {
           path: "/profile",
-          element: <ProfilePage />,
+          element: isAuthorized ? <ProfilePage /> : <Navigate to="/" />,
         },
         {
           path: "/*",

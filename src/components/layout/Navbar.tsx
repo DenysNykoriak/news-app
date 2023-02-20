@@ -17,6 +17,7 @@ export type NavbarProps = {
     reactKey: string;
     title: string;
     to: string;
+    needAuth?: boolean;
   }[];
 } & StackProps<"nav">;
 
@@ -106,10 +107,17 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
             {links.map((link) => (
               <MuiLink
                 key={link.reactKey}
-                component={Link}
-                to={link.to}
+                {...(!link.needAuth || isAuthorized
+                  ? {
+                      component: Link,
+                      to: link.to,
+                    }
+                  : {
+                      onClick: handleLoginDialogOpen,
+                    })}
                 underline="none"
                 sx={{
+                  cursor: "pointer",
                   color: palette.white[200],
                   py: 1,
                   px: 2,

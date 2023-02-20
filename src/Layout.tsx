@@ -20,7 +20,12 @@ const Layout = () => {
         links={[
           { reactKey: "home", title: "Home", to: "/" },
           { reactKey: "news", title: "News", to: "/news" },
-          { reactKey: "profile", title: "Profile", to: "/profile" },
+          {
+            reactKey: "profile",
+            title: "Profile",
+            to: "/profile",
+            needAuth: true,
+          },
         ]}
       />
       <ContentContainer>
