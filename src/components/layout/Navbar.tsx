@@ -9,7 +9,8 @@ import { useAuth } from "../../hooks/useAuth";
 import NavbarIconButton from "./navbar/NavbarIconButton";
 import Logo from "./navbar/Logo";
 import ConfirmationDialog from "../dialogs/ConfirmationDialog";
-import { useConfirmationDialog } from "../../hooks/useConfirmationDialog";
+import { useConfirmationDialog, useDialog } from "../../hooks/useDialog";
+import LoginDialog from "../dialogs/LoginDialog";
 
 export type NavbarProps = {
   links: {
@@ -35,6 +36,13 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
       logout();
     },
   });
+
+  //* Login
+  const {
+    dialogOpen: loginDialogOpen,
+    handleDialogClose: handleLoginDialogClose,
+    handleDialogOpen: handleLoginDialogOpen,
+  } = useDialog({});
 
   return (
     <>
@@ -70,7 +78,9 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
               />
             </NavbarIconButton>
             <NavbarIconButton
-              onClick={isAuthorized ? handleLogoutDialogOpen : undefined}
+              onClick={
+                isAuthorized ? handleLogoutDialogOpen : handleLoginDialogOpen
+              }
               title={isAuthorized ? "Log out" : "Log in"}
             >
               {isAuthorized ? (
@@ -114,6 +124,10 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
           </Stack>
         </Stack>
       </Stack>
+      <LoginDialog
+        open={loginDialogOpen}
+        handleClose={handleLoginDialogClose}
+      />
       <ConfirmationDialog
         subtitle="Are you sure want to log out?"
         open={confirmLogoutOpenState}

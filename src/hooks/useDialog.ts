@@ -1,14 +1,32 @@
 import { useState } from "react";
 
-type Props = {
+interface DialogProps {
   handleClose?: () => void;
+}
+
+interface ConfirmationDialogProps extends DialogProps {
   handleConsent?: () => void;
+}
+
+export const useDialog = ({ handleClose }: DialogProps) => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+    if (handleClose) handleClose();
+  };
+  const handleDialogOpen = () => setDialogOpen(true);
+
+  return {
+    dialogOpen,
+    handleDialogClose,
+    handleDialogOpen,
+  };
 };
 
 export const useConfirmationDialog = ({
   handleClose,
   handleConsent,
-}: Props) => {
+}: ConfirmationDialogProps) => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleDialogOpen = () => setDialogOpen(true);

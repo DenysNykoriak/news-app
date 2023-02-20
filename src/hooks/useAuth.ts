@@ -60,6 +60,11 @@ export const useAuth = () => {
         role: user.role,
       })
     );
+
+    return {
+      success: true,
+      message: "Success",
+    } as const;
   };
 
   return {
