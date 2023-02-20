@@ -1,54 +1,28 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { fetchNewsPosts, newsSelectors } from "../logic/store/slices/newsSlice";
+import { useAppDispatch, useAppSelector } from "./useStore";
 
-type NewsType = {
-  id: number;
-  title: string;
-  body: string;
-  userId: number;
-  tags: string[];
-  reactions: number;
-  deleted?: boolean;
-};
+export const useNews = () => {
+  const dispatch = useAppDispatch();
 
-type NewsResponseType = {
-  posts: NewsType[];
-  total: number;
-  skip: number;
-  limit: number;
-};
+  const news = useAppSelector(newsSelectors.posts);
+  const { allLoaded, loadedPages } = useAppSelector(newsSelectors.full);
 
-export const useNews = (pageSize: number) => {
-  const [news, setNews] = useState<NewsType[]>([]);
-  const [totalNews, setTotalNews] = useState(-1);
-
-  const [loadNewPage, setLoadNewPage] = useState(true);
+  const [loadNewPage, setLoadNewPage] = useState(loadedPages.length === 0);
 
   useEffect(() => {
-    if (!loadNewPage || (totalNews > -1 && news.length >= totalNews)) return;
+    if (!loadNewPage) return;
 
-    axios
-      .get<NewsResponseType>("https://dummyjson.com/posts", {
-        params: {
-          limit: pageSize,
-          skip: news.length,
-        },
-      })
-      .then((result) => {
-        const resTotalNews = result.data.total;
-        setNews([...news, ...result.data.posts]);
-        if (resTotalNews > totalNews) setTotalNews(resTotalNews);
-      })
-      .catch((result) => result)
-      .finally(() => {
-        setLoadNewPage(false);
-      });
-  }, [loadNewPage, pageSize, news, totalNews]);
+    dispatch(fetchNewsPosts({ page: loadedPages.length })).then(() => {
+      setLoadNewPage(false);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loadNewPage]);
 
   return {
     news,
     loading: loadNewPage,
-    allLoaded: news.length >= totalNews,
+    allLoaded,
     loadNewPage: () => setLoadNewPage(true),
   } as const;
 };

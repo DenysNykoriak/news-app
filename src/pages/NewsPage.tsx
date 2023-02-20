@@ -33,7 +33,7 @@ const NewsPage = (props: Props) => {
 
   const theme = useMuiTheme();
 
-  const { news, allLoaded, loading, loadNewPage } = useNews(5);
+  const { news, allLoaded, loading, loadNewPage } = useNews();
 
   const scrollToTop = () => {
     window.scrollTo({
