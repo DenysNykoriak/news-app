@@ -6,7 +6,6 @@ import Layout from "./Layout";
 import { useInitAppTheme } from "./logic/theme";
 import HomePage from "./pages/HomePage";
 import NewsPage from "./pages/NewsPage";
-import NotFoundPage from "./pages/NotFoundPage";
 import ProfilePage from "./pages/ProfilePage";
 
 const AppRoutes = () => {
@@ -31,7 +30,7 @@ const AppRoutes = () => {
         },
         {
           path: "/*",
-          element: <NotFoundPage />,
+          element: <Navigate to="/" />,
         },
       ],
     },
