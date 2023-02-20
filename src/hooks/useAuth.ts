@@ -36,7 +36,7 @@ export const useAuth = () => {
 
   const logout = () => {
     localStorage.removeItem("access_token");
-    dispatch(authLogout);
+    dispatch(authLogout());
   };
 
   const login = (username: string, password: string) => {
