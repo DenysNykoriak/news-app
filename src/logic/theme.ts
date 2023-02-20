@@ -21,6 +21,7 @@ type ColorTokensType = {
     indigo: ColorPaletteType;
     white: ColorPaletteType;
     brown: ColorPaletteType;
+    red: ColorPaletteType;
   };
   common: {
     black: string;
@@ -95,6 +96,17 @@ const colorTokens = (): ColorTokensType => ({
       800: "#1b1312",
       900: "#0d0909",
     },
+    red: {
+      100: "#eed7d7",
+      200: "#deafaf",
+      300: "#cd8888",
+      400: "#bd6060",
+      500: "#ac3838",
+      600: "#8a2d2d",
+      700: "#672222",
+      800: "#451616",
+      900: "#220b0b",
+    },
   },
   common: {
     black: "#000000",
@@ -110,6 +122,7 @@ const themeSettings = (): ThemeOptions => {
     palette: {
       primary: { main: colors.palette.green[500] },
       secondary: { main: colors.palette.indigo[500] },
+      error: { main: colors.palette.red[400] },
       background: {
         default: colors.palette.white[500],
         paper: colors.palette.white[100],
