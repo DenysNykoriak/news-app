@@ -1,13 +1,35 @@
 import React from "react";
-import { Stack, StackProps, Typography } from "@mui/material";
+import { Stack, Grid, GridProps, Chip } from "@mui/material";
+import { useAppColors } from "../logic/theme";
+import PageTitle from "../components/layout/content/PageTitle";
 
-type Props = StackProps;
+type Props = GridProps;
 
 const NewsPage = (props: Props) => {
+  const [{ palette }] = useAppColors();
+
   return (
-    <Stack alignItems="center" justifyContent="center" {...props}>
-      <Typography variant="h2">News Page</Typography>
-    </Stack>
+    <Grid container spacing={4} {...props}>
+      <Grid item xs={12}>
+        <Stack
+          sx={{
+            flexDirection: "row",
+            alignItems: "center",
+            gap: 1,
+          }}
+        >
+          <PageTitle title="News" />
+          <Chip
+            label="+100 news"
+            size="small"
+            sx={{
+              bgcolor: palette.orange[500],
+              color: palette.white[100],
+            }}
+          />
+        </Stack>
+      </Grid>
+    </Grid>
   );
 };
 
