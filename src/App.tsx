@@ -1,6 +1,7 @@
 import { ThemeProvider } from "@mui/material";
 import React from "react";
 import { BrowserRouter, useRoutes } from "react-router-dom";
+import { useInitAuth } from "./hooks/useAuth";
 import Layout from "./Layout";
 import { useInitAppTheme } from "./logic/theme";
 import HomePage from "./pages/HomePage";
@@ -36,6 +37,8 @@ const AppRoutes = () => {
 };
 
 function App() {
+  useInitAuth();
+
   const [theme] = useInitAppTheme();
 
   return (

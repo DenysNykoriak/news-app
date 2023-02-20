@@ -19,7 +19,7 @@ export type NavbarProps = {
 
 const Navbar = ({ links, ...props }: NavbarProps) => {
   const [{ palette }] = useAppColors();
-  const { isAuthorized, toggleAuth } = useAuth();
+  const { isAuthorized } = useAuth();
 
   const location = useLocation();
 
@@ -55,10 +55,7 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
               }}
             />
           </NavbarIconButton>
-          <NavbarIconButton
-            title={isAuthorized ? "Log out" : "Log in"}
-            onClick={toggleAuth}
-          >
+          <NavbarIconButton title={isAuthorized ? "Log out" : "Log in"}>
             {isAuthorized ? (
               <LogoutOutlinedIcon
                 sx={{

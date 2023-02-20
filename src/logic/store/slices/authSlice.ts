@@ -3,6 +3,8 @@ import { RootState } from "../store";
 
 type UserType = {
   name: string;
+  username: string;
+  role: "Admin" | "User";
 };
 
 interface AuthState {
@@ -34,6 +36,9 @@ export const authReducer = authSlice.reducer;
 
 export const { login: authLogin, logout: authLogout } = authSlice.actions;
 export const authSelectors = {
+  authState: (state: RootState) => {
+    return state.auth;
+  },
   user: (state: RootState) => {
     return state.auth.user;
   },
