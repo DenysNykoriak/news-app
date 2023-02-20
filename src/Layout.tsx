@@ -13,7 +13,7 @@ const Layout = () => {
         minHeight: "100vh",
         justifyContent: "space-between",
         alignItems: "center",
-        overflow: "hidden",
+        overflowX: "clip",
       }}
     >
       <Navbar
