@@ -3,9 +3,9 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
 //Fetching
-type NewsPostIdType = number;
+export type NewsPostIdType = number;
 
-type NewsPostType = {
+export type NewsPostType = {
   id: NewsPostIdType;
   title: string;
   body: string;
@@ -62,8 +62,6 @@ const newsSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder.addCase(fetchNewsPosts.fulfilled, (state, actions) => {
-      //state.loading = false;
-
       if (state.loadedPages.includes(actions.meta.arg.page)) return;
 
       state.loadedPages.push(actions.meta.arg.page);
@@ -95,17 +93,13 @@ const newsSlice = createSlice({
 });
 
 export const newsReducer = newsSlice.reducer;
-
 export const { deletePosts: newsDeletePosts } = newsSlice.actions;
 
 export const newsSelectors = {
-  full: (state: RootState) => {
-    return state.news;
-  },
-  posts: (state: RootState) => {
-    return state.news.posts.filter((post) => !post.deleted);
-  },
-  deletedPosts: (state: RootState) => {
-    return state.news.posts.filter((post) => !post.deleted);
+  fullWithAvaiblePosts: (state: RootState) => {
+    return {
+      ...state.news,
+      posts: state.news.posts.filter((post) => !post.deleted),
+    } as const;
   },
 };

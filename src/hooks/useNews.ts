@@ -5,8 +5,9 @@ import { useAppDispatch, useAppSelector } from "./useStore";
 export const useNews = () => {
   const dispatch = useAppDispatch();
 
-  const news = useAppSelector(newsSelectors.posts);
-  const { allLoaded, loadedPages } = useAppSelector(newsSelectors.full);
+  const { posts, allLoaded, loadedPages } = useAppSelector(
+    newsSelectors.fullWithAvaiblePosts
+  );
 
   const [loadNewPage, setLoadNewPage] = useState(loadedPages.length === 0);
 
@@ -20,7 +21,7 @@ export const useNews = () => {
   }, [loadNewPage]);
 
   return {
-    news,
+    news: posts,
     loading: loadNewPage,
     allLoaded,
     loadNewPage: () => setLoadNewPage(true),

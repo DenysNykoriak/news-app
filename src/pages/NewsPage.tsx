@@ -5,22 +5,19 @@ import {
   GridProps,
   Chip,
   useTheme as useMuiTheme,
-  Paper,
   Typography,
   IconButton,
-  Divider,
   Skeleton,
   styled,
   Tooltip,
 } from "@mui/material";
 import { useAppColors } from "../logic/theme";
-import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
-import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowUpOutlined";
 import ArrowUpwardOutlinedIcon from "@mui/icons-material/ArrowUpwardOutlined";
 import PageTitle from "../components/layout/content/PageTitle";
 import PieWidget from "../components/widgets/PieWidget";
 import { useNews } from "../hooks/useNews";
 import AddBox from "../components/AddBox";
+import NewsPost from "../components/news/NewsPost";
 
 type Props = GridProps;
 
@@ -77,7 +74,7 @@ const NewsPage = (props: Props) => {
               gap: 2,
             }}
           >
-            {news.length === 0 && (
+            {news.length === 0 && loading && (
               <>
                 <NewsPostSkeleton variant="rectangular" height={112} />
                 <NewsPostSkeleton variant="rectangular" height={168} />
@@ -87,60 +84,7 @@ const NewsPage = (props: Props) => {
               </>
             )}
             {news.map((newsPost) => (
-              <Paper
-                key={newsPost.id}
-                sx={{
-                  p: 2,
-                  borderRadius: "20px",
-                }}
-              >
-                <Stack
-                  sx={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    mb: 2,
-                  }}
-                >
-                  <Typography
-                    variant="h3"
-                    sx={{
-                      fontWeight: 600,
-                    }}
-                  >
-                    {newsPost.title}
-                  </Typography>
-                  <IconButton>
-                    <MoreVertOutlinedIcon />
-                  </IconButton>
-                </Stack>
-                <Typography variant="body1" gutterBottom>
-                  {newsPost.body}
-                </Typography>
-                <Stack
-                  sx={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    gap: 1,
-                  }}
-                >
-                  <Stack
-                    sx={{
-                      flexDirection: "row",
-                      alignItems: "center",
-                    }}
-                  >
-                    <IconButton>
-                      <KeyboardDoubleArrowUpOutlinedIcon />
-                    </IconButton>
-                    <Typography>{newsPost.reactions}</Typography>
-                  </Stack>
-                  <Divider orientation="vertical" variant="middle" flexItem />
-                  {newsPost.tags.map((tag, index) => (
-                    <Typography key={tag + index}>#{tag}</Typography>
-                  ))}
-                </Stack>
-              </Paper>
+              <NewsPost key={newsPost.id} newsPost={newsPost} />
             ))}
             {allLoaded && (
               <Typography
