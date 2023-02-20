@@ -1,5 +1,5 @@
-import axios from "axios";
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { fetchNewsPosts } from "../actions/newsActions";
 import { RootState } from "../store";
 
 //Fetching
@@ -13,17 +13,6 @@ export type NewsPostType = {
   tags: string[];
   reactions: number;
   deleted?: boolean;
-};
-
-type NewsResponseType = {
-  posts: NewsPostType[];
-  total: number;
-  skip: number;
-  limit: number;
-};
-
-type NewsArgType = {
-  page: number;
 };
 
 //State
@@ -40,22 +29,6 @@ const initialState: NewsState = {
   posts: [],
   deletedPostIds: [],
 };
-
-export const fetchNewsPosts = createAsyncThunk<NewsResponseType, NewsArgType>(
-  "news/fetchNewsPosts",
-  ({ page }) => {
-    const postOnPage = 10;
-
-    return axios
-      .get<NewsResponseType>("https://dummyjson.com/posts", {
-        params: {
-          limit: postOnPage,
-          skip: page * postOnPage,
-        },
-      })
-      .then((response) => response.data);
-  }
-);
 
 const newsSlice = createSlice({
   name: "news",

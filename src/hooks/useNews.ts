@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchNewsPosts, newsSelectors } from "../logic/store/slices/newsSlice";
+import { fetchNewsPosts } from "../logic/store/actions/newsActions";
+import { newsSelectors } from "../logic/store/slices/newsSlice";
 import { useAppDispatch, useAppSelector } from "./useStore";
 
 export const useNews = () => {
