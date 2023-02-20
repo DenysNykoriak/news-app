@@ -87,7 +87,7 @@ const LoginDialog = ({ open, handleClose }: Props) => {
   return (
     <Dialog
       open={open}
-      onClose={handleClose}
+      onClose={handleFormClose}
       PaperProps={{
         sx: {
           borderRadius: "20px",
