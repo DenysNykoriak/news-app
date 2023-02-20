@@ -1,4 +1,4 @@
-type UserType = {
+export type BackendUserType = {
   name: string;
   username: string;
   role: "Admin" | "User";
@@ -7,7 +7,7 @@ type UserType = {
 };
 
 //! Mock backend users data
-export const users: UserType[] = [
+export const users: BackendUserType[] = [
   {
     name: "Admin",
     username: "admin",

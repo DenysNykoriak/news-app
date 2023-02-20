@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, useEffect } from "react";
 import { useAppColors } from "../../logic/theme";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
@@ -37,14 +37,13 @@ const LoginInput = styled(InputBase)(({ theme }) => ({
 
 const LoginDialog = ({ open, handleClose }: Props) => {
   const [{ palette, common: commonColors }] = useAppColors();
-  const { login } = useAuth();
+  const { login, rejectReason, user, clearRejectReason } = useAuth();
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
     username: "",
     password: "",
   });
-  const [errorMessage, setErrorMessage] = useState("");
 
   const handleFormChange =
     (field: "username" | "password") => (e: ChangeEvent<HTMLInputElement>) => {
@@ -60,29 +59,33 @@ const LoginDialog = ({ open, handleClose }: Props) => {
       username: "",
       password: "",
     });
-    setErrorMessage("");
+    clearRejectReason();
   };
 
   const handleLogin = () => {
-    const result = login(form.username, form.password);
+    login(form.username, form.password);
+  };
 
-    if (result.success) {
+  useEffect(() => {
+    if (!open) return;
+
+    if (rejectReason && !user) {
+      //Unsuccessful Login
+      setForm({
+        username: form.username,
+        password: "",
+      });
+    } else if (user) {
+      //Successful Login
       handleClose();
       setForm({
         username: "",
         password: "",
       });
-      setErrorMessage("");
       navigate("/profile");
-      return;
     }
-
-    setErrorMessage(result.message);
-    setForm({
-      username: form.username,
-      password: "",
-    });
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, rejectReason]);
 
   return (
     <Dialog
@@ -97,6 +100,7 @@ const LoginDialog = ({ open, handleClose }: Props) => {
       }}
     >
       <DialogTitle
+        component={"header"}
         sx={{
           mb: 1,
         }}
@@ -112,7 +116,7 @@ const LoginDialog = ({ open, handleClose }: Props) => {
       </DialogTitle>
       <DialogContent>
         <Stack component="form">
-          <FormControl error={Boolean(errorMessage)} sx={{ mb: 2 }}>
+          <FormControl error={Boolean(rejectReason)} sx={{ mb: 2 }}>
             <FormLabel
               htmlFor="username"
               sx={{
@@ -129,7 +133,7 @@ const LoginDialog = ({ open, handleClose }: Props) => {
               onChange={handleFormChange("username")}
             />
           </FormControl>
-          <FormControl error={Boolean(errorMessage)} sx={{ mb: 2 }}>
+          <FormControl error={Boolean(rejectReason)} sx={{ mb: 2 }}>
             <FormLabel
               htmlFor="password"
               sx={{
@@ -146,7 +150,7 @@ const LoginDialog = ({ open, handleClose }: Props) => {
               value={form.password}
               onChange={handleFormChange("password")}
             />
-            <FormHelperText>{errorMessage}</FormHelperText>
+            <FormHelperText>{rejectReason}</FormHelperText>
           </FormControl>
           <Stack
             sx={{

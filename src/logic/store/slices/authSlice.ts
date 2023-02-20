@@ -1,48 +1,78 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import {
+  fetchUserAccess,
+  fetchUserLogin,
+  fetchUserLogout,
+} from "../actions/authActions";
 import { RootState } from "../store";
 
-type UserType = {
+type AuthUserType = {
   name: string;
   username: string;
   role: "Admin" | "User";
 };
 
 interface AuthState {
-  user: UserType | null;
-  isAuthorized: boolean;
+  user: AuthUserType | null;
+  rejectReason: string | null;
 }
 
 const initialState: AuthState = {
   user: null,
-  isAuthorized: false,
+  rejectReason: null,
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {
-    login: (state, action: PayloadAction<UserType>) => {
-      state.user = action.payload;
-      state.isAuthorized = true;
-    },
-    logout: (state) => {
+  extraReducers: (builder) => {
+    //* Login
+    builder.addCase(fetchUserLogin.pending, (state) => {
+      state.rejectReason = null;
+    });
+
+    builder.addCase(fetchUserLogin.fulfilled, (state, action) => {
+      state.user = {
+        name: action.payload.name,
+        username: action.payload.username,
+        role: action.payload.role,
+      };
+    });
+
+    builder.addCase(fetchUserLogin.rejected, (state, action) => {
+      if (action.error.message) state.rejectReason = action.error.message;
+    });
+
+    //* Access
+    builder.addCase(fetchUserAccess.fulfilled, (state, action) => {
+      state.user = {
+        name: action.payload.name,
+        username: action.payload.username,
+        role: action.payload.role,
+      };
+    });
+
+    //* Logout
+    builder.addCase(fetchUserLogout.fulfilled, (state) => {
       state.user = null;
-      state.isAuthorized = false;
+    });
+  },
+  reducers: {
+    clearRejectReason: (state) => {
+      state.rejectReason = null;
     },
   },
 });
 
 export const authReducer = authSlice.reducer;
 
-export const { login: authLogin, logout: authLogout } = authSlice.actions;
+export const { clearRejectReason: authClearRejectReason } = authSlice.actions;
+
 export const authSelectors = {
-  authState: (state: RootState) => {
-    return state.auth;
-  },
   user: (state: RootState) => {
     return state.auth.user;
   },
-  isAuthorized: (state: RootState) => {
-    return state.auth.isAuthorized;
+  rejectReason: (state: RootState) => {
+    return state.auth.rejectReason;
   },
 };

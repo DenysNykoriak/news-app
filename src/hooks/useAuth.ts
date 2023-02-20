@@ -1,8 +1,11 @@
 import { useEffect } from "react";
-import { users } from "../data/users";
 import {
-  authLogin,
-  authLogout,
+  fetchUserAccess,
+  fetchUserLogin,
+  fetchUserLogout,
+} from "../logic/store/actions/authActions";
+import {
+  authClearRejectReason,
   authSelectors,
 } from "../logic/store/slices/authSlice";
 import { useAppDispatch, useAppSelector } from "./useStore";
@@ -13,64 +16,36 @@ export const useInitAuth = () => {
   useEffect(() => {
     const access_token = localStorage.getItem("access_token");
     if (access_token) {
-      //* Request to backend
-      const user = users.find((user) => user.access_token === access_token);
-      //* -
-
-      if (!user) return localStorage.removeItem("access_token");
-
-      dispatch(
-        authLogin({
-          name: user.name,
-          username: user.username,
-          role: user.role,
-        })
-      );
+      dispatch(fetchUserAccess({ access_token }));
     }
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 };
 
 export const useAuth = () => {
   const dispatch = useAppDispatch();
-  const authState = useAppSelector(authSelectors.authState);
 
-  const logout = () => {
-    localStorage.removeItem("access_token");
-    dispatch(authLogout());
-  };
+  const user = useAppSelector(authSelectors.user);
+  const rejectReason = useAppSelector(authSelectors.rejectReason);
 
   const login = (username: string, password: string) => {
-    //* Request to backend
-    const user = users.find(
-      (user) => user.username === username && user.password === password
-    );
-    //* -
+    dispatch(fetchUserLogin({ username, password }));
+  };
 
-    if (!user)
-      return {
-        success: false as const,
-        message: "Username or password entered incorrectly",
-      };
+  const logout = () => {
+    dispatch(fetchUserLogout(null));
+  };
 
-    localStorage.setItem("access_token", user.access_token);
-    dispatch(
-      authLogin({
-        name: user.name,
-        username: user.username,
-        role: user.role,
-      })
-    );
-
-    return {
-      success: true,
-      message: "Success",
-    } as const;
+  const clearRejectReason = () => {
+    dispatch(authClearRejectReason());
   };
 
   return {
-    isAuthorized: authState.isAuthorized,
-    user: authState.user,
+    isAuthorized: Boolean(user),
+    user,
+    rejectReason,
     login,
     logout,
+    clearRejectReason,
   } as const;
 };
