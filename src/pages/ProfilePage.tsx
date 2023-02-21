@@ -17,12 +17,15 @@ import LastUploadsWidget from "../components/widgets/LastUploadsWidget";
 import Avatars from "../components/widgets/parts/Avatars";
 import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 type Props = GridProps;
 
 const ProfilePage = (props: Props) => {
   const navigate = useNavigate();
   const [{ palette }] = useAppColors();
+
+  const [t] = useTranslation("ProfilePage");
 
   const { user } = useAuth();
   if (!user) {
@@ -40,9 +43,9 @@ const ProfilePage = (props: Props) => {
             gap: 1,
           }}
         >
-          <PageTitle title="Profile" />
+          <PageTitle title={t("title", "Profile") as string} />
           <Chip
-            label="+100 news"
+            label={t("Pages:recentNews", "+100 news", { count: 100 })}
             size="small"
             sx={{
               bgcolor: palette.orange[500],
@@ -103,7 +106,10 @@ const ProfilePage = (props: Props) => {
                 @{user.username}
               </Typography>
               <Divider orientation="vertical" flexItem />
-              <Typography variant="h5">Role: </Typography>
+              <Typography variant="h5">
+                {t("role", "Role")}
+                {": "}
+              </Typography>
               <Typography
                 variant="h5"
                 sx={{
@@ -113,7 +119,7 @@ const ProfilePage = (props: Props) => {
                 {user.role}
               </Typography>
               <Divider orientation="vertical" flexItem />
-              <Typography variant="h5">Lvl: 2</Typography>
+              <Typography variant="h5">{t("lvl", "Lvl")}: 2</Typography>
             </Stack>
             <Stack direction="row" gap={3}>
               <Button
@@ -122,9 +128,11 @@ const ProfilePage = (props: Props) => {
                   color: palette.white[100],
                 }}
               >
-                Message
+                {t("messageButton", "Message")}
               </Button>
-              <Button variant="outlined">Share Profile</Button>
+              <Button variant="outlined">
+                {t("shareProfile", "Share Profile")}
+              </Button>
             </Stack>
           </Stack>
           <IconButton>
@@ -134,17 +142,17 @@ const ProfilePage = (props: Props) => {
       </Grid>
       <Grid item xs={12}>
         <LastUploadsWidget
-          title="Last News"
+          title={t("Widgets:LastNews", "Last News")}
           data={[
             {
-              title: "News in IT",
-              date: "Feb 19, 2023",
+              title: t("Widgets:LastNewsPosts.post1", "Last News"),
+              date: t("Months:Feb", "Feb 19, 2023", { sequel: "19, 2023" }),
               color: palette.indigo[500],
               avatars: <Avatars letters={["AN", "LG", "FB"]} />,
             },
             {
-              title: "Some News",
-              date: "Feb 14, 2023",
+              title: t("Widgets:LastNewsPosts.post2", "Some News"),
+              date: t("Months:Feb", "Feb 14, 2023", { sequel: "14, 2023" }),
               color: palette.green[500],
               avatars: (
                 <Avatars
@@ -154,32 +162,35 @@ const ProfilePage = (props: Props) => {
               ),
             },
             {
-              title: "More About Banks",
-              date: "Feb 12, 2023",
+              title: t("Widgets:LastNewsPosts.post3", "More About Banks"),
+              date: t("Months:Feb", "Feb 12, 2023", { sequel: "12, 2023" }),
               color: palette.orange[400],
               avatars: <Avatars letters={["ED", "MD", "AR", "TR"]} />,
             },
             {
-              title: "Look in your past",
-              date: "Feb 7, 2023",
+              title: t("Widgets:LastNewsPosts.post4", "Look in your past"),
+              date: t("Months:Feb", "Feb 7, 2023", { sequel: "7, 2023" }),
               color: palette.brown[400],
               avatars: <Avatars letters={["AN", "BN"]} />,
             },
             {
-              title: "Future Medicine",
-              date: "Feb 4, 2023",
+              title: t("Widgets:LastNewsPosts.post5", "Future Medicine"),
+              date: t("Months:Feb", "Feb 4, 2023", { sequel: "4, 2023" }),
               color: palette.orange[300],
               avatars: <Avatars letters={["AV", "KL", "BA"]} max={2} />,
             },
             {
-              title: "Best facts about Ukraine",
-              date: "Jan 29, 2023",
+              title: t(
+                "Widgets:LastNewsPosts.post6",
+                "Best facts about Ukraine"
+              ),
+              date: t("Months:Jan", "Jan 29, 2023", { sequel: "29, 2023" }),
               color: palette.indigo[200],
               avatars: <Avatars letters={["PY", "FB", "AA", "BG"]} />,
             },
             {
-              title: "Computer Devices",
-              date: "Jan 24, 2023",
+              title: t("Widgets:LastNewsPosts.post7", "Computer Devices"),
+              date: t("Months:Jan", "Jan 24, 2023", { sequel: "24, 2023" }),
               color: palette.green[200],
               avatars: <Avatars letters={["AY", "BB"]} />,
             },

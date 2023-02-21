@@ -11,6 +11,7 @@ import Logo from "./navbar/Logo";
 import ConfirmationDialog from "../dialogs/ConfirmationDialog";
 import { useConfirmationDialog, useDialog } from "../../hooks/useDialog";
 import LoginDialog from "../dialogs/LoginDialog";
+import { useTranslation } from "react-i18next";
 
 export type NavbarProps = {
   links: {
@@ -26,6 +27,7 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
   const { isAuthorized, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const [t] = useTranslation("Navbar");
 
   //* Confirm Logout
   const {
@@ -73,7 +75,7 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
               gap: 2,
             }}
           >
-            <NavbarIconButton title="Notification">
+            <NavbarIconButton title={t("Notification", "Notification")}>
               <NotificationsOutlinedIcon
                 sx={{
                   color: palette.white[200],
@@ -84,7 +86,9 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
               onClick={
                 isAuthorized ? handleLogoutDialogOpen : handleLoginDialogOpen
               }
-              title={isAuthorized ? "Log out" : "Log in"}
+              title={
+                isAuthorized ? t("Logout", "Log out") : t("Login", "Log in")
+              }
             >
               {isAuthorized ? (
                 <LogoutOutlinedIcon
@@ -139,7 +143,7 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
         handleClose={handleLoginDialogClose}
       />
       <ConfirmationDialog
-        subtitle="Are you sure want to log out?"
+        subtitle={t("confirmLogout", "Are you sure want to log out?")}
         open={confirmLogoutOpenState}
         handleClose={handleLogoutDialogClose}
         handleConsent={handleLogoutDialogConsent}

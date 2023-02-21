@@ -18,6 +18,7 @@ import PieWidget from "../components/widgets/PieWidget";
 import { useNews } from "../hooks/useNews";
 import AddBox from "../components/AddBox";
 import NewsPost from "../components/news/NewsPost";
+import { useTranslation } from "react-i18next";
 
 type Props = GridProps;
 
@@ -31,6 +32,8 @@ const NewsPage = (props: Props) => {
   const theme = useMuiTheme();
 
   const { news, allLoaded, loading, loadNewPage } = useNews();
+
+  const [t] = useTranslation("NewsPage");
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -49,9 +52,9 @@ const NewsPage = (props: Props) => {
             gap: 1,
           }}
         >
-          <PageTitle title="News" />
+          <PageTitle title={t("title", "News") as string} />
           <Chip
-            label="+100 news"
+            label={t("Pages:recentNews", "+100 news", { count: 100 })}
             size="small"
             sx={{
               bgcolor: palette.orange[500],
@@ -95,7 +98,10 @@ const NewsPage = (props: Props) => {
                   my: 2,
                 }}
               >
-                Unfortunately, this is all the news. Come back later to see more
+                {t(
+                  "allNewsLoaded",
+                  "Unfortunately, this is all the news. Come back later to see more"
+                )}
               </Typography>
             )}
             <AddBox
@@ -116,15 +122,39 @@ const NewsPage = (props: Props) => {
             }}
           >
             <PieWidget
-              title="News Statistics"
+              title={t("Widgets:NewsStatistics", "News Statistics")}
               percentage={65}
               data={[
-                { title: "Finances", value: 342, color: palette.indigo[500] },
-                { title: "Politics", value: 242, color: palette.green[500] },
-                { title: "IT", value: 302, color: palette.orange[400] },
-                { title: "Medicine", value: 282, color: palette.green[600] },
-                { title: "Jobs", value: 102, color: palette.indigo[400] },
-                { title: "Other", value: 502, color: palette.red[300] },
+                {
+                  title: t("NewsCategories:Finances", "Finances"),
+                  value: 342,
+                  color: palette.indigo[500],
+                },
+                {
+                  title: t("NewsCategories:Politics", "Politics"),
+                  value: 242,
+                  color: palette.green[500],
+                },
+                {
+                  title: t("NewsCategories:IT", "IT"),
+                  value: 302,
+                  color: palette.orange[400],
+                },
+                {
+                  title: t("NewsCategories:Medicine", "Medicine"),
+                  value: 282,
+                  color: palette.green[600],
+                },
+                {
+                  title: t("NewsCategories:Jobs", "Jobs"),
+                  value: 102,
+                  color: palette.indigo[400],
+                },
+                {
+                  title: t("NewsCategories:Other", "Other"),
+                  value: 502,
+                  color: palette.red[300],
+                },
               ]}
             />
             <Tooltip title={"Move to top"}>

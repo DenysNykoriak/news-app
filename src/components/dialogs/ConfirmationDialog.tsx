@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import React from "react";
 import { useAppColors } from "../../logic/theme";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   open: boolean;
@@ -25,6 +26,8 @@ const ConfirmationDialog = ({
   handleClose,
 }: Props) => {
   const [{ palette }] = useAppColors();
+
+  const [t] = useTranslation("Dialogs");
 
   return (
     <Dialog
@@ -50,7 +53,10 @@ const ConfirmationDialog = ({
           }}
         >
           <Typography variant="h4">{subtitle}</Typography>
-          <Tooltip title="Please, confirm this action" placement="top-start">
+          <Tooltip
+            title={t("confirmAction", "Please, confirm this action")}
+            placement="top-start"
+          >
             <HelpOutlineOutlinedIcon
               sx={{
                 color: palette.grey[300],
@@ -74,7 +80,7 @@ const ConfirmationDialog = ({
               color: palette.white[100],
             }}
           >
-            Cancel
+            {t("CancelButton", "Cancel")}
           </Button>
           <Button
             variant="contained"
@@ -83,7 +89,7 @@ const ConfirmationDialog = ({
               color: palette.white[100],
             }}
           >
-            Consent
+            {t("ConsentButton", "Consent")}
           </Button>
         </Stack>
       </DialogContent>

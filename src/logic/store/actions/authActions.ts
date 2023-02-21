@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { BackendUserType, users } from "../../../data/users";
+import i18n from "./../../i18n";
 
 type UserLoginArgType = { username: string; password: string };
 
@@ -17,7 +18,12 @@ export const fetchUserLogin = createAsyncThunk<
     //* -
     if (user) return resolve(user);
 
-    reject("Username or password entered incorrectly");
+    reject(
+      i18n.t(
+        "Dialogs:invalidFields",
+        "Username or password entered incorrectly"
+      )
+    );
   })
     .then((user) => {
       localStorage.setItem("access_token", user.access_token);

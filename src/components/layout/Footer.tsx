@@ -1,11 +1,14 @@
 import React from "react";
 import { Stack, StackProps, Typography, Link } from "@mui/material";
 import { useAppColors } from "../../logic/theme";
+import { useTranslation } from "react-i18next";
 
 type Props = StackProps<"footer">;
 
 const Footer = (props: Props) => {
   const [{ palette }] = useAppColors();
+
+  const [t] = useTranslation("Footer");
 
   return (
     <Stack
@@ -29,7 +32,10 @@ const Footer = (props: Props) => {
           color: palette.white[100],
         }}
       >
-        Test Task for AlterEGO on position Strong Junior Developer
+        {t(
+          "mainText",
+          "Test Task for AlterEGO on position Strong Junior Developer"
+        )}
       </Typography>
       <Stack
         sx={{
@@ -45,7 +51,7 @@ const Footer = (props: Props) => {
             color: palette.white[100],
           }}
         >
-          Author: Denys Nykoriak
+          {t("author", "Author: Denys Nykoriak")}
         </Typography>
         <Typography
           variant="body1"
@@ -53,7 +59,7 @@ const Footer = (props: Props) => {
             color: palette.white[100],
           }}
         >
-          Inspired by:{" "}
+          {t("inspiredBy", "Inspired by") + ": "}
           <Link
             href="https://dribbble.com/shots/17257234-Admin-dashboard-analytics-UX"
             underline="none"

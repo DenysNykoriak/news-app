@@ -6,6 +6,7 @@ import {
   NewsPostIdType,
 } from "../../logic/store/slices/newsSlice";
 import { useAppColors } from "../../logic/theme";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   newsPostId: NewsPostIdType;
@@ -14,6 +15,7 @@ type Props = {
 const NewsPostDropdown = ({ newsPostId, onClose, ...props }: Props) => {
   const dispatch = useDispatch();
   const [{ palette }] = useAppColors();
+  const [t] = useTranslation("Dialogs");
 
   const handleDelete = () => {
     if (onClose) onClose({}, "backdropClick");
@@ -42,7 +44,7 @@ const NewsPostDropdown = ({ newsPostId, onClose, ...props }: Props) => {
           color: palette.red[500],
         }}
       >
-        Delete
+        {t("DeleteButton", "Delete")}
       </MenuItem>
     </Menu>
   );

@@ -4,8 +4,11 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import ContentContainer from "./components/layout/ContentContainer";
 import Footer from "./components/layout/Footer";
+import { useTranslation } from "react-i18next";
 
 const Layout = () => {
+  const [t] = useTranslation();
+
   return (
     <Stack
       sx={{
@@ -18,11 +21,15 @@ const Layout = () => {
     >
       <Navbar
         links={[
-          { reactKey: "home", title: "Home", to: "/" },
-          { reactKey: "news", title: "News", to: "/news" },
+          { reactKey: "home", title: t("Navbar:links./", "Home"), to: "/" },
+          {
+            reactKey: "news",
+            title: t("Navbar:links./news", "News"),
+            to: "/news",
+          },
           {
             reactKey: "profile",
-            title: "Profile",
+            title: t("Navbar:links./profile", "Profile"),
             to: "/profile",
             needAuth: true,
           },

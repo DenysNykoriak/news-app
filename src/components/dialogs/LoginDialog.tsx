@@ -15,6 +15,7 @@ import React, { useState, ChangeEvent, useEffect } from "react";
 import { useAppColors } from "../../logic/theme";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   open: boolean;
@@ -39,6 +40,7 @@ const LoginDialog = ({ open, handleClose }: Props) => {
   const [{ palette, common: commonColors }] = useAppColors();
   const { login, rejectReason, user, clearRejectReason } = useAuth();
   const navigate = useNavigate();
+  const [t] = useTranslation("Dialogs");
 
   const [form, setForm] = useState({
     username: "",
@@ -111,7 +113,7 @@ const LoginDialog = ({ open, handleClose }: Props) => {
             fontWeight: 600,
           }}
         >
-          Login
+          {t("loginTitle", "Login")}
         </Typography>
       </DialogTitle>
       <DialogContent>
@@ -124,11 +126,13 @@ const LoginDialog = ({ open, handleClose }: Props) => {
                 color: commonColors.black,
               }}
             >
-              Username
+              {t("loginFields.username", "Username")}
             </FormLabel>
             <LoginInput
               id="username"
-              placeholder="admin"
+              placeholder={
+                t("loginFields.usernamePlaceholder", "admin") as string
+              }
               value={form.username}
               onChange={handleFormChange("username")}
             />
@@ -141,12 +145,17 @@ const LoginDialog = ({ open, handleClose }: Props) => {
                 color: commonColors.black,
               }}
             >
-              Password
+              {t("loginFields.password", "Password")}
             </FormLabel>
             <LoginInput
               type="password"
               id="password"
-              placeholder="Some strong password"
+              placeholder={
+                t(
+                  "loginFields.passwordPlaceholder",
+                  "Some strong password"
+                ) as string
+              }
               value={form.password}
               onChange={handleFormChange("password")}
             />
@@ -166,7 +175,7 @@ const LoginDialog = ({ open, handleClose }: Props) => {
                 color: palette.white[100],
               }}
             >
-              Cancel
+              {t("CancelButton", "Cancel")}
             </Button>
             <Button
               variant="contained"
@@ -175,7 +184,7 @@ const LoginDialog = ({ open, handleClose }: Props) => {
                 color: palette.white[100],
               }}
             >
-              Log in
+              {t("LoginButton", "Log in")}
             </Button>
           </Stack>
         </Stack>
