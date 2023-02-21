@@ -15,9 +15,11 @@ type AuthUserType = {
 interface AuthState {
   user: AuthUserType | null;
   rejectReason: string | null;
+  checkingAuth: boolean;
 }
 
 const initialState: AuthState = {
+  checkingAuth: true,
   user: null,
   rejectReason: null,
 };
@@ -61,18 +63,21 @@ const authSlice = createSlice({
     clearRejectReason: (state) => {
       state.rejectReason = null;
     },
+    setAsChecked: (state) => {
+      state.checkingAuth = false;
+    },
   },
 });
 
 export const authReducer = authSlice.reducer;
 
-export const { clearRejectReason: authClearRejectReason } = authSlice.actions;
+export const {
+  clearRejectReason: authClearRejectReason,
+  setAsChecked: authSetAsChecked,
+} = authSlice.actions;
 
 export const authSelectors = {
-  user: (state: RootState) => {
-    return state.auth.user;
-  },
-  rejectReason: (state: RootState) => {
-    return state.auth.rejectReason;
+  full: (state: RootState) => {
+    return state.auth;
   },
 };

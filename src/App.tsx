@@ -9,7 +9,7 @@ import NewsPage from "./pages/NewsPage";
 import ProfilePage from "./pages/ProfilePage";
 
 const AppRoutes = () => {
-  const { isAuthorized } = useAuth();
+  const { isAuthorized, checkingAuth } = useAuth();
 
   return useRoutes([
     {
@@ -26,7 +26,13 @@ const AppRoutes = () => {
         },
         {
           path: "/profile",
-          element: isAuthorized ? <ProfilePage /> : <Navigate to="/" />,
+          element: checkingAuth ? (
+            <div>Loading...</div>
+          ) : isAuthorized ? (
+            <ProfilePage />
+          ) : (
+            <Navigate to="/" />
+          ),
         },
         {
           path: "/*",

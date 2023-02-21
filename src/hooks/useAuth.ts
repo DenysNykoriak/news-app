@@ -7,6 +7,7 @@ import {
 import {
   authClearRejectReason,
   authSelectors,
+  authSetAsChecked,
 } from "../logic/store/slices/authSlice";
 import { useAppDispatch, useAppSelector } from "./useStore";
 
@@ -16,8 +17,13 @@ export const useInitAuth = () => {
   useEffect(() => {
     const access_token = localStorage.getItem("access_token");
     if (access_token) {
-      dispatch(fetchUserAccess({ access_token }));
+      dispatch(fetchUserAccess({ access_token })).then(() => {
+        dispatch(authSetAsChecked());
+      });
+      return;
     }
+
+    dispatch(authSetAsChecked());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
@@ -25,8 +31,9 @@ export const useInitAuth = () => {
 export const useAuth = () => {
   const dispatch = useAppDispatch();
 
-  const user = useAppSelector(authSelectors.user);
-  const rejectReason = useAppSelector(authSelectors.rejectReason);
+  const { user, rejectReason, checkingAuth } = useAppSelector(
+    authSelectors.full
+  );
 
   const login = (username: string, password: string) => {
     dispatch(fetchUserLogin({ username, password }));
@@ -42,6 +49,7 @@ export const useAuth = () => {
 
   return {
     isAuthorized: Boolean(user),
+    checkingAuth,
     user,
     rejectReason,
     login,
