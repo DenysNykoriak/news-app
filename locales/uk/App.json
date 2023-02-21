@@ -1,0 +1,84 @@
+{
+  "Months": {
+    "Jan": "Січ {{sequel}}",
+    "Feb": "Лют {{sequel}}"
+  },
+  "NewsCategories": {
+    "Finances": "Фінанси",
+    "Politics": "Політика",
+    "IT": "IT",
+    "Medicine": "Медицина",
+    "Jobs": "Ринок Праці",
+    "Other": "Інше"
+  },
+  "Widgets": {
+    "NewsStatistics": "Статистика новин",
+    "LastNews": "Останні новини",
+    "LastNewsPosts": {
+      "post1": "Останні новини",
+      "post2": "Якісь новини",
+      "post3": "Більше про банки",
+      "post4": "Заглянь в своє минуле",
+      "post5": "Медицина майбутнього",
+      "post6": "Топ факти про Україну",
+      "post7": "Комп'ютерні девайси"
+    }
+  },
+  "Navbar": {
+    "Notification": "Повідомлення",
+    "Login": "Ввійти",
+    "Logout": "Вийти",
+    "confirmLogout": "Ви дійсно хочете вийти?",
+    "links": {
+      "/": "Головна",
+      "/news": "Новини",
+      "/profile": "Профіль"
+    }
+  },
+  "Footer": {
+    "mainText": "Тестове завдання для AlterEGO на позицію Strong Junior Developer",
+    "author": "Власник: Денис Никоряк",
+    "inspiredBy": "Натхнення для дизайну брав",
+    "inspiredLink": "тут"
+  },
+  "Dialogs": {
+    "confirmAction": "Будь ласка, підтвердіть цю дію",
+
+    "loginTitle": "Вхід в аккаунт",
+    "loginFields": {
+      "username": "Ім'я",
+      "usernamePlaceholder": "admin",
+      "password": "Пароль",
+      "passwordPlaceholder": "Надійний пароль"
+    },
+    "invalidFields": "Ім'я або пароль введено невірно",
+
+    "CancelButton": "Відмінити",
+    "ConsentButton": "Погоджуюсь",
+    "LoginButton": "Ввійти",
+    "DeleteButton": "Видалити"
+  },
+  "Pages": {
+    "recentNews_zero": "немає новин",
+    "recentNews_one": "+{{count}} новина",
+    "recentNews_few": "+{{count}} новини",
+    "recentNews_many": "+{{count}} новин"
+  },
+  "HomePage": {
+    "title": "Головна",
+    "contentTitle": "Всі новини в одному місці",
+    "contentSubtitle": "Знаходь, читай, видаляй новини з швидким доступом до них"
+  },
+  "NewsPage": {
+    "title": "Новини",
+    "allNewsLoaded": "На жаль, це всі новини. Приходь пізніше, щоб побачити більше",
+    "moveToTop": "На верх"
+  },
+  "ProfilePage": {
+    "title": "Профіль",
+    "role": "Роль",
+    "lvl": "Ур",
+    "messageButton": "Написати",
+    "shareProfile": "Поширити профіль"
+  }
+}
