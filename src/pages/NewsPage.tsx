@@ -157,7 +157,7 @@ const NewsPage = (props: Props) => {
                 },
               ]}
             />
-            <Tooltip title={"Move to top"}>
+            <Tooltip title={t("NewsPage.moveToTop", "Move to top")}>
               <IconButton
                 onClick={scrollToTop}
                 sx={{

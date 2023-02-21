@@ -70,7 +70,8 @@
   },
   "NewsPage": {
     "title": "News",
-    "allNewsLoaded": "Unfortunately, this is all the news. Come back later to see more"
+    "allNewsLoaded": "Unfortunately, this is all the news. Come back later to see more",
+    "moveToTop": "Move to top"
   },
   "ProfilePage": {
     "title": "Profile",
