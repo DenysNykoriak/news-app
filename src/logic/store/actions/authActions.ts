@@ -20,7 +20,7 @@ export const fetchUserLogin = createAsyncThunk<
 
     reject(
       i18n.t(
-        "Dialogs:invalidFields",
+        "Dialogs.invalidFields",
         "Username or password entered incorrectly"
       )
     );

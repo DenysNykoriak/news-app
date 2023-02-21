@@ -7,7 +7,7 @@ type Props = SelectProps;
 
 const SelectLang = (props: Props) => {
   const [{ palette }] = useAppColors();
-  const [, i18n] = useTranslation("Dialogs");
+  const [, i18n] = useTranslation();
 
   const handleChange = (lang: "uk" | "en") => () => {
     if (lang !== i18n.language) i18n.changeLanguage(lang);

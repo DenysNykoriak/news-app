@@ -1,0 +1,82 @@
+{
+  "Months": {
+    "Jan": "Jan {{sequel}}",
+    "Feb": "Feb {{sequel}}"
+  },
+  "NewsCategories": {
+    "Finances": "Finances",
+    "Politics": "Politics",
+    "IT": "IT",
+    "Medicine": "Medicine",
+    "Jobs": "Jobs",
+    "Other": "Other"
+  },
+  "Widgets": {
+    "NewsStatistics": "News Statistics",
+    "LastNews": "Last News",
+    "LastNewsPosts": {
+      "post1": "Last News",
+      "post2": "Some News",
+      "post3": "More About Banks",
+      "post4": "Look into your past",
+      "post5": "Future Medicine",
+      "post6": "Best facts about Ukraine",
+      "post7": "Computer Devices"
+    }
+  },
+  "Navbar": {
+    "Notification": "Notification",
+    "Login": "Log in",
+    "Logout": "Log out",
+    "confirmLogout": "Are you sure want to log out?",
+    "links": {
+      "/": "Home",
+      "/news": "News",
+      "/profile": "Profile"
+    }
+  },
+  "Footer": {
+    "mainText": "Test Task for AlterEGO on position Strong Junior Developer",
+    "author": "Author: Denys Nykoriak",
+    "inspiredBy": "Inspired by",
+    "inspiredLink": "Dribbble"
+  },
+  "Dialogs": {
+    "confirmAction": "Please, confirm this action",
+
+    "loginTitle": "Login",
+    "loginFields": {
+      "username": "Username",
+      "usernamePlaceholder": "admin",
+      "password": "Password",
+      "passwordPlaceholder": "Some strong password"
+    },
+    "invalidFields": "Username or password entered incorrectly",
+
+    "CancelButton": "Cancel",
+    "ConsentButton": "Consent",
+    "LoginButton": "Log in",
+    "DeleteButton": "Delete"
+  },
+  "Pages": {
+    "recentNews_zero": "no news",
+    "recentNews_one": "+1 new",
+    "recentNews_other": "+{{count}} news"
+  },
+  "HomePage": {
+    "title": "Home",
+    "contentTitle": "All News In One Place",
+    "contentSubtitle": "Find, read, delete news and have quick access to all of these"
+  },
+  "NewsPage": {
+    "title": "News",
+    "allNewsLoaded": "Unfortunately, this is all the news. Come back later to see more"
+  },
+  "ProfilePage": {
+    "title": "Profile",
+    "role": "Role",
+    "lvl": "Lvl",
+    "messageButton": "Message",
+    "shareProfile": "Share Profile"
+  }
+}
