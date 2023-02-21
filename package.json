@@ -2,6 +2,7 @@
   "name": "news-app",
   "version": "1.0.0",
   "private": true,
+  "homepage": "http://denysnykoriak.github.io/news-app/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -25,6 +26,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "prettier": "prettier --write .",
@@ -54,6 +57,7 @@
     "@types/react-redux": "^7.1.25",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "gh-pages": "^5.0.0",
     "prettier": "^2.8.4",
     "typescript": "^4.9.5"
   }
