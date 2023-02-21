@@ -1,6 +1,11 @@
 import { ThemeProvider } from "@mui/material";
 import React from "react";
-import { BrowserRouter, useRoutes, Navigate } from "react-router-dom";
+import {
+  HashRouter,
+  useRoutes,
+  Navigate,
+  BrowserRouter,
+} from "react-router-dom";
 import { useAuth, useInitAuth } from "./hooks/useAuth";
 import Layout from "./Layout";
 import { useInitAppTheme } from "./logic/theme";
@@ -43,6 +48,9 @@ const AppRoutes = () => {
   ]);
 };
 
+const isProduction = process.env.NODE_ENV === "production";
+const AppRouter = isProduction ? HashRouter : BrowserRouter;
+
 function App() {
   useInitAuth();
 
@@ -50,9 +58,9 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
+      <AppRouter>
         <AppRoutes />
-      </BrowserRouter>
+      </AppRouter>
     </ThemeProvider>
   );
 }

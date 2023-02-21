@@ -3,11 +3,13 @@ import I18nextBrowserLanguageDetector from "i18next-browser-languagedetector";
 import I18NextHttpBackend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 
+const isProduction = process.env.NODE_ENV === "production";
+
 const i18NextOptions: InitOptions = {
   fallbackLng: "en",
   supportedLngs: ["uk", "en"],
   backend: {
-    loadPath: "/locales/{{lng}}/{{ns}}.json",
+    loadPath: `${isProduction ? "/news-app" : ""}/locales/{{lng}}/{{ns}}.json`,
   },
   ns: ["App"],
   defaultNS: "App",
