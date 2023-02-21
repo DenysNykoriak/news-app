@@ -33,7 +33,7 @@ const NewsPage = (props: Props) => {
 
   const { news, allLoaded, loading, loadNewPage } = useNews();
 
-  const [t] = useTranslation("NewsPage");
+  const [t] = useTranslation("App");
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -52,9 +52,9 @@ const NewsPage = (props: Props) => {
             gap: 1,
           }}
         >
-          <PageTitle title={t("title", "News") as string} />
+          <PageTitle title={t("NewsPage.title", "News") as string} />
           <Chip
-            label={t("Pages:recentNews", "+100 news", { count: 100 })}
+            label={t("Pages.recentNews", "+100 news", { count: 100 })}
             size="small"
             sx={{
               bgcolor: palette.orange[500],
@@ -122,36 +122,36 @@ const NewsPage = (props: Props) => {
             }}
           >
             <PieWidget
-              title={t("Widgets:NewsStatistics", "News Statistics")}
+              title={t("Widgets.NewsStatistics", "News Statistics")}
               percentage={65}
               data={[
                 {
-                  title: t("NewsCategories:Finances", "Finances"),
+                  title: t("NewsCategories.Finances", "Finances"),
                   value: 342,
                   color: palette.indigo[500],
                 },
                 {
-                  title: t("NewsCategories:Politics", "Politics"),
+                  title: t("NewsCategories.Politics", "Politics"),
                   value: 242,
                   color: palette.green[500],
                 },
                 {
-                  title: t("NewsCategories:IT", "IT"),
+                  title: t("NewsCategories.IT", "IT"),
                   value: 302,
                   color: palette.orange[400],
                 },
                 {
-                  title: t("NewsCategories:Medicine", "Medicine"),
+                  title: t("NewsCategories.Medicine", "Medicine"),
                   value: 282,
                   color: palette.green[600],
                 },
                 {
-                  title: t("NewsCategories:Jobs", "Jobs"),
+                  title: t("NewsCategories.Jobs", "Jobs"),
                   value: 102,
                   color: palette.indigo[400],
                 },
                 {
-                  title: t("NewsCategories:Other", "Other"),
+                  title: t("NewsCategories.Other", "Other"),
                   value: 502,
                   color: palette.red[300],
                 },

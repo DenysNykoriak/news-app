@@ -40,7 +40,7 @@ const LoginDialog = ({ open, handleClose }: Props) => {
   const [{ palette, common: commonColors }] = useAppColors();
   const { login, rejectReason, user, clearRejectReason } = useAuth();
   const navigate = useNavigate();
-  const [t] = useTranslation("Dialogs");
+  const [t] = useTranslation("App");
 
   const [form, setForm] = useState({
     username: "",
@@ -113,7 +113,7 @@ const LoginDialog = ({ open, handleClose }: Props) => {
             fontWeight: 600,
           }}
         >
-          {t("loginTitle", "Login")}
+          {t("Dialogs.loginTitle", "Login")}
         </Typography>
       </DialogTitle>
       <DialogContent>
@@ -126,12 +126,12 @@ const LoginDialog = ({ open, handleClose }: Props) => {
                 color: commonColors.black,
               }}
             >
-              {t("loginFields.username", "Username")}
+              {t("Dialogs.loginFields.username", "Username")}
             </FormLabel>
             <LoginInput
               id="username"
               placeholder={
-                t("loginFields.usernamePlaceholder", "admin") as string
+                t("Dialogs.loginFields.usernamePlaceholder", "admin") as string
               }
               value={form.username}
               onChange={handleFormChange("username")}
@@ -145,14 +145,14 @@ const LoginDialog = ({ open, handleClose }: Props) => {
                 color: commonColors.black,
               }}
             >
-              {t("loginFields.password", "Password")}
+              {t("Dialogs.loginFields.password", "Password")}
             </FormLabel>
             <LoginInput
               type="password"
               id="password"
               placeholder={
                 t(
-                  "loginFields.passwordPlaceholder",
+                  "Dialogs.loginFields.passwordPlaceholder",
                   "Some strong password"
                 ) as string
               }
@@ -175,7 +175,7 @@ const LoginDialog = ({ open, handleClose }: Props) => {
                 color: palette.white[100],
               }}
             >
-              {t("CancelButton", "Cancel")}
+              {t("Dialogs.CancelButton", "Cancel")}
             </Button>
             <Button
               variant="contained"
@@ -184,7 +184,7 @@ const LoginDialog = ({ open, handleClose }: Props) => {
                 color: palette.white[100],
               }}
             >
-              {t("LoginButton", "Log in")}
+              {t("Dialogs.LoginButton", "Log in")}
             </Button>
           </Stack>
         </Stack>

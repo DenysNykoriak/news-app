@@ -17,7 +17,7 @@ const SelectLang = (props: Props) => {
     <Select
       size="small"
       variant="outlined"
-      defaultValue={i18n.language}
+      value={i18n.language}
       sx={{
         outline: 0,
         border: `2px solid ${palette.grey[300]}`,

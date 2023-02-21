@@ -25,7 +25,7 @@ const ProfilePage = (props: Props) => {
   const navigate = useNavigate();
   const [{ palette }] = useAppColors();
 
-  const [t] = useTranslation("ProfilePage");
+  const [t] = useTranslation("App");
 
   const { user } = useAuth();
   if (!user) {
@@ -43,9 +43,9 @@ const ProfilePage = (props: Props) => {
             gap: 1,
           }}
         >
-          <PageTitle title={t("title", "Profile") as string} />
+          <PageTitle title={t("ProfilePage.title", "Profile") as string} />
           <Chip
-            label={t("Pages:recentNews", "+100 news", { count: 100 })}
+            label={t("Pages.recentNews", "+100 news", { count: 100 })}
             size="small"
             sx={{
               bgcolor: palette.orange[500],
@@ -107,7 +107,7 @@ const ProfilePage = (props: Props) => {
               </Typography>
               <Divider orientation="vertical" flexItem />
               <Typography variant="h5">
-                {t("role", "Role")}
+                {t("ProfilePage.role", "Role")}
                 {": "}
               </Typography>
               <Typography
@@ -119,7 +119,9 @@ const ProfilePage = (props: Props) => {
                 {user.role}
               </Typography>
               <Divider orientation="vertical" flexItem />
-              <Typography variant="h5">{t("lvl", "Lvl")}: 2</Typography>
+              <Typography variant="h5">
+                {t("ProfilePage.lvl", "Lvl")}: 2
+              </Typography>
             </Stack>
             <Stack direction="row" gap={3}>
               <Button
@@ -128,10 +130,10 @@ const ProfilePage = (props: Props) => {
                   color: palette.white[100],
                 }}
               >
-                {t("messageButton", "Message")}
+                {t("ProfilePage.messageButton", "Message")}
               </Button>
               <Button variant="outlined">
-                {t("shareProfile", "Share Profile")}
+                {t("ProfilePage.shareProfile", "Share Profile")}
               </Button>
             </Stack>
           </Stack>
@@ -142,17 +144,17 @@ const ProfilePage = (props: Props) => {
       </Grid>
       <Grid item xs={12}>
         <LastUploadsWidget
-          title={t("Widgets:LastNews", "Last News")}
+          title={t("Widgets.LastNews", "Last News")}
           data={[
             {
-              title: t("Widgets:LastNewsPosts.post1", "Last News"),
-              date: t("Months:Feb", "Feb 19, 2023", { sequel: "19, 2023" }),
+              title: t("Widgets.LastNewsPosts.post1", "Last News"),
+              date: t("Months.Feb", "Feb 19, 2023", { sequel: "19, 2023" }),
               color: palette.indigo[500],
               avatars: <Avatars letters={["AN", "LG", "FB"]} />,
             },
             {
-              title: t("Widgets:LastNewsPosts.post2", "Some News"),
-              date: t("Months:Feb", "Feb 14, 2023", { sequel: "14, 2023" }),
+              title: t("Widgets.LastNewsPosts.post2", "Some News"),
+              date: t("Months.Feb", "Feb 14, 2023", { sequel: "14, 2023" }),
               color: palette.green[500],
               avatars: (
                 <Avatars
@@ -162,35 +164,35 @@ const ProfilePage = (props: Props) => {
               ),
             },
             {
-              title: t("Widgets:LastNewsPosts.post3", "More About Banks"),
-              date: t("Months:Feb", "Feb 12, 2023", { sequel: "12, 2023" }),
+              title: t("Widgets.LastNewsPosts.post3", "More About Banks"),
+              date: t("Months.Feb", "Feb 12, 2023", { sequel: "12, 2023" }),
               color: palette.orange[400],
               avatars: <Avatars letters={["ED", "MD", "AR", "TR"]} />,
             },
             {
-              title: t("Widgets:LastNewsPosts.post4", "Look in your past"),
-              date: t("Months:Feb", "Feb 7, 2023", { sequel: "7, 2023" }),
+              title: t("Widgets.LastNewsPosts.post4", "Look in your past"),
+              date: t("Months.Feb", "Feb 7, 2023", { sequel: "7, 2023" }),
               color: palette.brown[400],
               avatars: <Avatars letters={["AN", "BN"]} />,
             },
             {
-              title: t("Widgets:LastNewsPosts.post5", "Future Medicine"),
-              date: t("Months:Feb", "Feb 4, 2023", { sequel: "4, 2023" }),
+              title: t("Widgets.LastNewsPosts.post5", "Future Medicine"),
+              date: t("Months.Feb", "Feb 4, 2023", { sequel: "4, 2023" }),
               color: palette.orange[300],
               avatars: <Avatars letters={["AV", "KL", "BA"]} max={2} />,
             },
             {
               title: t(
-                "Widgets:LastNewsPosts.post6",
+                "Widgets.LastNewsPosts.post6",
                 "Best facts about Ukraine"
               ),
-              date: t("Months:Jan", "Jan 29, 2023", { sequel: "29, 2023" }),
+              date: t("Months.Jan", "Jan 29, 2023", { sequel: "29, 2023" }),
               color: palette.indigo[200],
               avatars: <Avatars letters={["PY", "FB", "AA", "BG"]} />,
             },
             {
-              title: t("Widgets:LastNewsPosts.post7", "Computer Devices"),
-              date: t("Months:Jan", "Jan 24, 2023", { sequel: "24, 2023" }),
+              title: t("Widgets.LastNewsPosts.post7", "Computer Devices"),
+              date: t("Months.Jan", "Jan 24, 2023", { sequel: "24, 2023" }),
               color: palette.green[200],
               avatars: <Avatars letters={["AY", "BB"]} />,
             },

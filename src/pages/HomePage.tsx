@@ -15,7 +15,7 @@ type Props = GridProps;
 const HomePage = (props: Props) => {
   const [{ palette, common: commonColors }] = useAppColors();
 
-  const [t] = useTranslation("HomePage");
+  const [t] = useTranslation("App");
 
   return (
     <Grid container spacing={4} {...props}>
@@ -27,9 +27,9 @@ const HomePage = (props: Props) => {
             gap: 1,
           }}
         >
-          <PageTitle title={t("title", "Home") as string} />
+          <PageTitle title={t("HomePage.title", "Home") as string} />
           <Chip
-            label={t("Pages:recentNews", "+100 news", { count: 100 })}
+            label={t("Pages.recentNews", "+100 news", { count: 100 })}
             size="small"
             sx={{
               bgcolor: palette.orange[500],
@@ -52,11 +52,11 @@ const HomePage = (props: Props) => {
               fontWeight: 600,
             }}
           >
-            {t("contentTitle", "All News In One Place")}
+            {t("HomePage.contentTitle", "All News In One Place")}
           </Typography>
           <Typography variant="h4" component="h2">
             {t(
-              "contentSubtitle",
+              "HomePage.contentSubtitle",
               "Find, read, delete news and have quick access to all of these"
             )}
           </Typography>
@@ -78,8 +78,8 @@ const HomePage = (props: Props) => {
           />
           <HomeCard
             number="01"
-            title={t("NewsCategories:Finances", "Finances")}
-            subtitle={t("Pages:recentNews", "+134 news", { count: 134 })}
+            title={t("NewsCategories.Finances", "Finances")}
+            subtitle={t("Pages.recentNews", "+134 news", { count: 134 })}
             color={palette.green[500]}
             sx={{
               width: "25%",
@@ -87,8 +87,8 @@ const HomePage = (props: Props) => {
           />
           <HomeCard
             number="02"
-            title={t("NewsCategories:Politics", "Politics")}
-            subtitle={t("Pages:recentNews", "+234 news", { count: 234 })}
+            title={t("NewsCategories.Politics", "Politics")}
+            subtitle={t("Pages.recentNews", "+234 news", { count: 234 })}
             color={palette.indigo[500]}
             sx={{
               width: "25%",
@@ -96,8 +96,8 @@ const HomePage = (props: Props) => {
           />
           <HomeCard
             number="03"
-            title={t("NewsCategories:IT", "IT")}
-            subtitle={t("Pages:recentNews", "+34 news", { count: 34 })}
+            title={t("NewsCategories.IT", "IT")}
+            subtitle={t("Pages.recentNews", "+34 news", { count: 34 })}
             color={palette.brown[400]}
             sx={{
               width: "25%",
@@ -113,26 +113,26 @@ const HomePage = (props: Props) => {
           }}
         >
           <PieWidget
-            title={t("Widgets:NewsStatistics", "News Statistics")}
+            title={t("Widgets.NewsStatistics", "News Statistics")}
             percentage={45}
             data={[
               {
-                title: t("NewsCategories:Finances", "Finances"),
+                title: t("NewsCategories.Finances", "Finances"),
                 value: 342,
                 color: palette.indigo[500],
               },
               {
-                title: t("NewsCategories:Politics", "Politics"),
+                title: t("NewsCategories.Politics", "Politics"),
                 value: 242,
                 color: palette.green[500],
               },
               {
-                title: t("NewsCategories:IT", "IT"),
+                title: t("NewsCategories.IT", "IT"),
                 value: 302,
                 color: palette.orange[400],
               },
               {
-                title: t("NewsCategories:Other", "Other"),
+                title: t("NewsCategories.Other", "Other"),
                 value: 502,
                 color: palette.grey[200],
               },
@@ -142,17 +142,17 @@ const HomePage = (props: Props) => {
             }}
           />
           <LastUploadsWidget
-            title={t("Widgets:LastNews", "Last News")}
+            title={t("Widgets.LastNews", "Last News")}
             data={[
               {
-                title: t("Widgets:LastNewsPosts.post1", "Last News"),
-                date: t("Months:Feb", "Feb 19, 2023", { sequel: "19, 2023" }),
+                title: t("Widgets.LastNewsPosts.post1", "Last News"),
+                date: t("Months.Feb", "Feb 19, 2023", { sequel: "19, 2023" }),
                 color: palette.indigo[500],
                 avatars: <Avatars letters={["AN", "LG", "FB"]} />,
               },
               {
-                title: t("Widgets:LastNewsPosts.post2", "Some News"),
-                date: t("Months:Feb", "Feb 14, 2023", { sequel: "14, 2023" }),
+                title: t("Widgets.LastNewsPosts.post2", "Some News"),
+                date: t("Months.Feb", "Feb 14, 2023", { sequel: "14, 2023" }),
                 color: palette.green[500],
                 avatars: (
                   <Avatars
@@ -162,35 +162,35 @@ const HomePage = (props: Props) => {
                 ),
               },
               {
-                title: t("Widgets:LastNewsPosts.post3", "More About Banks"),
-                date: t("Months:Feb", "Feb 12, 2023", { sequel: "12, 2023" }),
+                title: t("Widgets.LastNewsPosts.post3", "More About Banks"),
+                date: t("Months.Feb", "Feb 12, 2023", { sequel: "12, 2023" }),
                 color: palette.orange[400],
                 avatars: <Avatars letters={["ED", "MD", "AR", "TR"]} />,
               },
               {
-                title: t("Widgets:LastNewsPosts.post4", "Look in your past"),
-                date: t("Months:Feb", "Feb 7, 2023", { sequel: "7, 2023" }),
+                title: t("Widgets.LastNewsPosts.post4", "Look in your past"),
+                date: t("Months.Feb", "Feb 7, 2023", { sequel: "7, 2023" }),
                 color: palette.brown[400],
                 avatars: <Avatars letters={["AN", "BN"]} />,
               },
               {
-                title: t("Widgets:LastNewsPosts.post5", "Future Medicine"),
-                date: t("Months:Feb", "Feb 4, 2023", { sequel: "4, 2023" }),
+                title: t("Widgets.LastNewsPosts.post5", "Future Medicine"),
+                date: t("Months.Feb", "Feb 4, 2023", { sequel: "4, 2023" }),
                 color: palette.orange[300],
                 avatars: <Avatars letters={["AV", "KL", "BA"]} max={2} />,
               },
               {
                 title: t(
-                  "Widgets:LastNewsPosts.post6",
+                  "Widgets.LastNewsPosts.post6",
                   "Best facts about Ukraine"
                 ),
-                date: t("Months:Jan", "Jan 29, 2023", { sequel: "29, 2023" }),
+                date: t("Months.Jan", "Jan 29, 2023", { sequel: "29, 2023" }),
                 color: palette.indigo[200],
                 avatars: <Avatars letters={["PY", "FB", "AA", "BG"]} />,
               },
               {
-                title: t("Widgets:LastNewsPosts.post7", "Computer Devices"),
-                date: t("Months:Jan", "Jan 24, 2023", { sequel: "24, 2023" }),
+                title: t("Widgets.LastNewsPosts.post7", "Computer Devices"),
+                date: t("Months.Jan", "Jan 24, 2023", { sequel: "24, 2023" }),
                 color: palette.green[200],
                 avatars: <Avatars letters={["AY", "BB"]} />,
               },

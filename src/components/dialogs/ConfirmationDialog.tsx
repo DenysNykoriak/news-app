@@ -27,7 +27,7 @@ const ConfirmationDialog = ({
 }: Props) => {
   const [{ palette }] = useAppColors();
 
-  const [t] = useTranslation("Dialogs");
+  const [t] = useTranslation("App");
 
   return (
     <Dialog
@@ -54,7 +54,7 @@ const ConfirmationDialog = ({
         >
           <Typography variant="h4">{subtitle}</Typography>
           <Tooltip
-            title={t("confirmAction", "Please, confirm this action")}
+            title={t("Dialogs.confirmAction", "Please, confirm this action")}
             placement="top-start"
           >
             <HelpOutlineOutlinedIcon
@@ -80,7 +80,7 @@ const ConfirmationDialog = ({
               color: palette.white[100],
             }}
           >
-            {t("CancelButton", "Cancel")}
+            {t("Dialogs.CancelButton", "Cancel")}
           </Button>
           <Button
             variant="contained"
@@ -89,7 +89,7 @@ const ConfirmationDialog = ({
               color: palette.white[100],
             }}
           >
-            {t("ConsentButton", "Consent")}
+            {t("Dialogs.ConsentButton", "Consent")}
           </Button>
         </Stack>
       </DialogContent>

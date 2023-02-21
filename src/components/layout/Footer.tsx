@@ -8,7 +8,7 @@ type Props = StackProps<"footer">;
 const Footer = (props: Props) => {
   const [{ palette }] = useAppColors();
 
-  const [t] = useTranslation("Footer");
+  const [t] = useTranslation("App");
 
   return (
     <Stack
@@ -33,7 +33,7 @@ const Footer = (props: Props) => {
         }}
       >
         {t(
-          "mainText",
+          "Footer.mainText",
           "Test Task for AlterEGO on position Strong Junior Developer"
         )}
       </Typography>
@@ -51,7 +51,7 @@ const Footer = (props: Props) => {
             color: palette.white[100],
           }}
         >
-          {t("author", "Author: Denys Nykoriak")}
+          {t("Footer.author", "Author: Denys Nykoriak")}
         </Typography>
         <Typography
           variant="body1"
@@ -59,13 +59,13 @@ const Footer = (props: Props) => {
             color: palette.white[100],
           }}
         >
-          {t("inspiredBy", "Inspired by") + ": "}
+          {t("Footer.inspiredBy", "Inspired by") + ": "}
           <Link
             href="https://dribbble.com/shots/17257234-Admin-dashboard-analytics-UX"
             underline="none"
             target="_blank"
           >
-            {t("inspiredLink", "Dribbble")}
+            {t("Footer.inspiredLink", "Dribbble")}
           </Link>
         </Typography>
       </Stack>

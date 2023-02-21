@@ -28,7 +28,7 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
   const { isAuthorized, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const [t] = useTranslation("Navbar");
+  const [t] = useTranslation("App");
 
   //* Confirm Logout
   const {
@@ -77,7 +77,7 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
             }}
           >
             <SelectLang />
-            <NavbarIconButton title={t("Notification", "Notification")}>
+            <NavbarIconButton title={t("Navbar.Notification", "Notification")}>
               <NotificationsOutlinedIcon
                 sx={{
                   color: palette.white[200],
@@ -89,7 +89,9 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
                 isAuthorized ? handleLogoutDialogOpen : handleLoginDialogOpen
               }
               title={
-                isAuthorized ? t("Logout", "Log out") : t("Login", "Log in")
+                isAuthorized
+                  ? t("Navbar.Logout", "Log out")
+                  : t("Navbar.Login", "Log in")
               }
             >
               {isAuthorized ? (
@@ -145,7 +147,7 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
         handleClose={handleLoginDialogClose}
       />
       <ConfirmationDialog
-        subtitle={t("confirmLogout", "Are you sure want to log out?")}
+        subtitle={t("Navbar.confirmLogout", "Are you sure want to log out?")}
         open={confirmLogoutOpenState}
         handleClose={handleLogoutDialogClose}
         handleConsent={handleLogoutDialogConsent}

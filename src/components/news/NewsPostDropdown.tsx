@@ -15,7 +15,7 @@ type Props = {
 const NewsPostDropdown = ({ newsPostId, onClose, ...props }: Props) => {
   const dispatch = useDispatch();
   const [{ palette }] = useAppColors();
-  const [t] = useTranslation("Dialogs");
+  const [t] = useTranslation("App");
 
   const handleDelete = () => {
     if (onClose) onClose({}, "backdropClick");
@@ -44,7 +44,7 @@ const NewsPostDropdown = ({ newsPostId, onClose, ...props }: Props) => {
           color: palette.red[500],
         }}
       >
-        {t("DeleteButton", "Delete")}
+        {t("Dialogs.DeleteButton", "Delete")}
       </MenuItem>
     </Menu>
   );
