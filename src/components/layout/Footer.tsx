@@ -65,7 +65,7 @@ const Footer = (props: Props) => {
             underline="none"
             target="_blank"
           >
-            Dribbble
+            {t("inspiredLink", "Dribbble")}
           </Link>
         </Typography>
       </Stack>

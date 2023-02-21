@@ -4,7 +4,7 @@ import I18NextHttpBackend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 
 const i18NextOptions: InitOptions = {
-  lng: "en",
+  lng: "uk",
   fallbackLng: "en",
   supportedLngs: ["uk", "en"],
   ns: [
@@ -45,7 +45,7 @@ const i18NextOptions: InitOptions = {
           post1: "Last News",
           post2: "Some News",
           post3: "More About Banks",
-          post4: "Look in your past",
+          post4: "Look into your past",
           post5: "Future Medicine",
           post6: "Best facts about Ukraine",
           post7: "Computer Devices",
@@ -66,6 +66,7 @@ const i18NextOptions: InitOptions = {
         mainText: "Test Task for AlterEGO on position Strong Junior Developer",
         author: "Author: Denys Nykoriak",
         inspiredBy: "Inspired by",
+        inspiredLink: "Dribbble",
       },
       Dialogs: {
         //Confirmation Dialog
@@ -108,6 +109,95 @@ const i18NextOptions: InitOptions = {
         lvl: "Lvl",
         messageButton: "Message",
         shareProfile: "Share Profile",
+      },
+    },
+    uk: {
+      Months: {
+        Jan: "Січ {{sequel}}",
+        Feb: "Лют {{sequel}}",
+        // ....
+      },
+      NewsCategories: {
+        Finances: "Фінанси",
+        Politics: "Політика",
+        IT: "IT",
+        Medicine: "Медицина",
+        Jobs: "Ринок Праці",
+        Other: "Інше",
+      },
+      Widgets: {
+        NewsStatistics: "Статистика новин",
+        LastNews: "Останні новини",
+        LastNewsPosts: {
+          post1: "Останні новини",
+          post2: "Якісь новини",
+          post3: "Більше про банки",
+          post4: "Заглянь в своє минуле",
+          post5: "Медицина майбутнього",
+          post6: "Топ факти про Україну",
+          post7: "Комп'ютерні девайси",
+        },
+      },
+      Navbar: {
+        Notification: "Повідомлення",
+        Login: "Ввійти",
+        Logout: "Вийти",
+        confirmLogout: "Ви дійсно хочете вийти?",
+        links: {
+          "/": "Головна",
+          "/news": "Новини",
+          "/profile": "Профіль",
+        },
+      },
+      Footer: {
+        mainText:
+          "Тестове завдання для AlterEGO на позицію Strong Junior Developer",
+        author: "Власник: Денис Никоряк",
+        inspiredBy: "Натхнення для дизайну брав",
+        inspiredLink: "тут",
+      },
+      Dialogs: {
+        //Confirmation Dialog
+        confirmAction: "Будь ласка, підтвердіть цю дію",
+        //LoginDialog
+        loginTitle: "Вхід в аккаунт",
+        loginFields: {
+          username: "Ім'я",
+          usernamePlaceholder: "admin",
+          password: "Пароль",
+          passwordPlaceholder: "Надійний пароль",
+        },
+        invalidFields: "Ім'я або пароль введено невірно",
+
+        //Buttons
+        CancelButton: "Відмінити",
+        ConsentButton: "Погоджуюсь",
+        LoginButton: "Ввійти",
+        DeleteButton: "Видалити",
+      },
+      Pages: {
+        recentNews_zero: "немає новин",
+        recentNews_one: "+{{count}} новина",
+        recentNews_few: "+{{count}} новини",
+        recentNews_many: "+{{count}} новин",
+      },
+      HomePage: {
+        title: "Головна",
+        contentTitle: "Всі новини в одному місці",
+        contentSubtitle:
+          "Знаходь, читай, видаляй новини з швидким доступом до них",
+      },
+      NewsPage: {
+        title: "Новини",
+        allNewsLoaded:
+          "На жаль, це всі новини. Приходь пізніше, щоб побачити більше",
+      },
+      ProfilePage: {
+        title: "Профіль",
+        role: "Роль",
+        lvl: "Ур",
+        messageButton: "Написати",
+        shareProfile: "Поширити профіль",
       },
     },
   },
