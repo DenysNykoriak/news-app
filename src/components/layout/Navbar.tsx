@@ -12,6 +12,7 @@ import ConfirmationDialog from "../dialogs/ConfirmationDialog";
 import { useConfirmationDialog, useDialog } from "../../hooks/useDialog";
 import LoginDialog from "../dialogs/LoginDialog";
 import { useTranslation } from "react-i18next";
+import SelectLang from "../SelectLang";
 
 export type NavbarProps = {
   links: {
@@ -75,6 +76,7 @@ const Navbar = ({ links, ...props }: NavbarProps) => {
               gap: 2,
             }}
           >
+            <SelectLang />
             <NavbarIconButton title={t("Notification", "Notification")}>
               <NotificationsOutlinedIcon
                 sx={{
