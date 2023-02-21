@@ -11,7 +11,7 @@ const i18NextOptions: InitOptions = {
   },
   ns: ["App"],
   defaultNS: "App",
-  debug: true,
+  debug: false,
   interpolation: {
     escapeValue: true,
   },
